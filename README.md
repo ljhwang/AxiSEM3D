@@ -1,3 +1,5 @@
+[![CI Status](https://github.com/tjhei/AxiSEM3D/actions/workflows/linux.yml/badge.svg)](https://github.com/tjhei/AxiSEM3D/actions/workflows/linux.yml)
+
 # AxiSEM3D
 
 AxiSEM3D is a spectral-element based solver for large-scale 3D seismic wave propagation simulations.
