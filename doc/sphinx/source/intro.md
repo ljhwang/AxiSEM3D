@@ -6,9 +6,9 @@ AxiSEM3D is a versatile solver for wave propagation in elastic, viscoelastic, ac
 
 It has extra functionality for a wavefield injection approach [Leng et al., 2020] to further boost computational efficiency for localised heterogeneities, as well as a framework for computing discrete and continuous adjoint wavefields which underpin the sensitivity kernels (Frechet derivatives) for full-waveform inversion with the same speedup [Szenzier et al., 2020]. While this capability to compute kernels is the most crucial computational aspect of full-waveform inversion, an actual iterative gradient scheme or other processing steps are not included here.
 
-<span style="color: red;"><b>*** TO DO: Missing Figure</b> </span>
+Wavefield snapshot for a simulation of the Virginia earthquake (click to go to the YouTube video to watch the simulation):
 
-![Wavefield snapshot for a simulation of the Virginia earthquake](https://www.earth.ox.ac.uk/wp-content/uploads/2020/07/scattering-768x538.jpg)
+[<img src="_static/wavefield_screenshot.png" width="500">](https://www.youtube.com/watch?v=v7_HqSzaBEg)
 
 Future extensions (interested?)
 Localised bases for azimuthal expansion; local time-stepping; GPU; improved load balancing
