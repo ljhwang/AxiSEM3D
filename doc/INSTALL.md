@@ -21,5 +21,5 @@ verify environment:
 
 Build:
 
-    sphinx-build -M html docs/source/ docs/build/
-    
+    cd doc/sphinx
+    make html
