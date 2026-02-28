@@ -42,7 +42,7 @@ Cite the code as:
 
     }
 
-Add the following to your list of References:
+Add the following articles {cite:p}`Leng2016` and {cite:p}`Leng2019` to your list of References:
 
     Leng, Nissen-Meyer, van Driel, 2016, Efficient global wave propagation adapted to 3-D structural complexity: a pseudo- spectral/spectral-element approach, Geophysical Journal International, 207, 1700-1721. https://doi.org/10.1093/gji/ggw363
 
