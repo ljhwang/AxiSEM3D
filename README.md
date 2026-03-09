@@ -4,6 +4,9 @@
 
 AxiSEM3D is a spectral-element based solver for large-scale 3D seismic wave propagation simulations.
 
+See the [documentation](https://axisem3d.readthedocs.io/en/latest/) for details.
+
+
 ## Quick start
 
 Create a new conda environment:
