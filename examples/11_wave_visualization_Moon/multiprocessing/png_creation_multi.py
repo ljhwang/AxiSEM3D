@@ -171,7 +171,7 @@ def process_mesh(mesh_file, mesh_dir, data_dir, output_file, target_line, lines_
     sphere.active_texture_coordinates = np.zeros((sphere.points.shape[0], 2))
     sphere.active_texture_coordinates[:, 0] = 0.5 + np.arctan2(-sphere.points[:, 0], sphere.points[:, 1])/(2 * np.pi)
     sphere.active_texture_coordinates[:, 1] = 0.5 + np.arcsin(sphere.points[:, 2]/R) / np.pi
-    moon = pv.Texture('lroc_color_poles_16k.png')
+    moon = pv.Texture('Moon.jpg')
     plotter.add_mesh(sphere, texture=moon, smooth_shading=False)
      
     # camera position
