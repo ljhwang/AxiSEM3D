@@ -1,0 +1,18 @@
+# Binaries and executables
+axisem3d
+*.exe
+*.o
+
+# Simulation outputs (large files)
+sim_run/*
+!sim_run/input/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+*.swp
+*~
