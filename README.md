@@ -35,6 +35,7 @@ rm -rf build && cmake -B build \
   -Dfftw=$CONDA_PREFIX \
   -Dmetis=$CONDA_PREFIX
 ```
+NOTE:  If this is your first time building, delete the ```rm``` command.
 
 Compile and link:
 
