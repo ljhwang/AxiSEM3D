@@ -41,7 +41,7 @@ from obspy.taup.seismic_phase import SeismicPhase
 
 from irfpy.moon import moon_map
 
-from pdart.util import linear_interpolation, remove_negative_ones
+from impact_simulations.util import linear_interpolation, remove_negative_ones
 
 import seaborn
 
