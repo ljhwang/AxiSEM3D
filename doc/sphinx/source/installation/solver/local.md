@@ -70,7 +70,7 @@ options, which we suggest doing in this order:
 
 
 Nex remove everything in the build folder and tell cmake that each of
-the dependencies can be found at the CONDA_PREFIX. If this is your first time building, delete the `rm` command as it will not find the folder.
+the dependencies can be found at the CONDA_PREFIX.
 
 ```bash
 rm -rf build && cmake -S ./SOLVER -B build \
