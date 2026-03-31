@@ -80,7 +80,7 @@ html_theme_options = {
 html_static_path = ['_static']
 
 
-# Add bibtex and generate a bibliography
+# Add bibtex and generate a bibliography.
 bibtex_bibfiles = ["references.bib"]
 bibtex_default_style = "alpha"
 bibtex_reference_style = "author_year"
