@@ -123,6 +123,7 @@ SE_Model::SE_Model(const ExodusMesh& exodusMesh,
   timer::gPreloopTimer.begin("Exchanging MPI buffers");
   std::vector<MPI_Request> reqSend(nCommProc, MPI_REQUEST_NULL);
   std::vector<MPI_Request> reqRecv(nCommProc, MPI_REQUEST_NULL);
+  assert(localMesh.mCommProc.size() == nCommProc);
   for (int iproc = 0; iproc < localMesh.mCommProc.size(); iproc++) {
     int commProc = localMesh.mCommProc[iproc];
     mpi::isend(commProc, bufSend[iproc], reqSend[iproc]);
