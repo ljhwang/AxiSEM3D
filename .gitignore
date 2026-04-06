@@ -40,7 +40,8 @@ simu3D/
 simu_with_1d_crust/
 simu_with_3d_crust/
 .ipynb_checkpoints/
-build
+build*/
+.cache/
 
 # Documentation
 .venv
