@@ -7,7 +7,7 @@ Each runnable case must contain:
 - `input/`: the input directory passed to `axisem3d --input`
 - `reference/`: expected outputs to compare against the generated `output/` tree
 - `screen-output`: expected console output after normalization
-- `config.txt`: contains test options (currently empty)
+- `config.txt`: contains test options (currently supported: "n_mpi_ranks N")
 
 Note:
 - Relative paths under `reference/` mirror the generated `output/` directory.
