@@ -173,8 +173,8 @@ Solid-fluid boundary____________________________________________
   SolidFluidCoupling1D                  =  514
   Σ                                     =  514
 Domain decomposition____________________________________________
-  # sub-domains (nproc)                 =  2
-  # rank-to-rank communications         =  1
+  # sub-domains (nproc)                 =  3
+  # rank-to-rank communications         =  3
 ================================================================
 
 

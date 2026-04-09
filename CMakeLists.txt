@@ -294,7 +294,8 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/tests")
     string(REPLACE "/config.txt" "" _testfolder ${_test})
     get_filename_component(_testname ${_testfolder} NAME)
 
-    message(STATUS "  Test ${_testname}, folder: ${_testfolder}")
+    message(STATUS "  Test ${_testname}:")
+    message(STATUS "    Path ${_testfolder}")
 
     if(NOT IS_DIRECTORY "${_testfolder}/input" OR
       NOT EXISTS "${_testfolder}/screen-output")
@@ -302,14 +303,24 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/tests")
       continue()
     endif()
 
+    # grab MPI ranks from config.txt if present:
+    file(STRINGS "${_testfolder}/config.txt" _n_mpi_ranks REGEX "n_mpi_ranks[ ]+[0-9]+")
+    if(_n_mpi_ranks)
+      list(GET _n_mpi_ranks 0 _line)
+      string(REGEX REPLACE "n_mpi_ranks[ ]+([0-9]+).*" "\\1" _n_mpi_ranks "${_line}")
+    else()
+      set(_n_mpi_ranks "1")
+    endif()
+
+    message(STATUS "    Running with ${_n_mpi_ranks} MPI ranks")
     file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname})
 
     add_custom_command(
       OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/screen-output
       COMMAND rm -f ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/runs
       COMMAND rm -rf ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/output
-      COMMAND echo mpirun -np 2 ${CMAKE_BINARY_DIR}/axisem3d --input ${_testfolder}/input --output ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/output
-      COMMAND mpirun -np 2 ${CMAKE_BINARY_DIR}/axisem3d --input ${_testfolder}/input --output ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/output 2>&1 | tee ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/raw-screen-output
+      COMMAND echo mpirun -np ${_n_mpi_ranks} ${CMAKE_BINARY_DIR}/axisem3d --input ${_testfolder}/input --output ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/output
+      COMMAND mpirun -np ${_n_mpi_ranks} ${CMAKE_BINARY_DIR}/axisem3d --input ${_testfolder}/input --output ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/output 2>&1 | tee ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/raw-screen-output
       COMMAND ${CMAKE_SOURCE_DIR}/cmake/normalize_screen_output.sh ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/raw-screen-output ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/screen-output
       COMMAND touch ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/runs
       DEPENDS axisem3d ${_test} ${CMAKE_SOURCE_DIR}/CMakeLists.txt
