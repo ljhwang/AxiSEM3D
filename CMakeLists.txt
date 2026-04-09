@@ -1,12 +1,7 @@
+# SPDX-License-Identifier: MIT
+# Copyright (C) 2019 - 2026 by the AxiSEM3D authors
 #
-#  CMakeLists.txt
-#  AxiSEM3D
-#
-#  Created by Kuangdai Leng on 8/15/19.
-#  Copyright © 2019 Kuangdai Leng. All rights reserved.
-#
-
-#  CMakeLists.txt
+# This file is part of the AxiSEM3D library. See the LICENSE file for details.
 
 ########################################################################
 ###################### Build Settings (EDIT BELOW) #####################
