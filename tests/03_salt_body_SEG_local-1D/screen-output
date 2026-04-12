@@ -1,0 +1,312 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                
+      A            |i .|'''.|'||''''E'||    ||'  ____'||''|.    
+     |||   ... ...... ||..  ' ||  .   |||  |||   ` // ||   ||   
+    |  ||   '|..'  ||  ''|||. ||''|   |'|..'||    //  ||    ||  
+   .''''|.   .x.   ||      '||||      | 'M' ||    \\  ||    ||  
+  .|.  .||..|  ||..||.|'...|S.||....|.|. | .||.    3' D|...|'   
+  .............................................   //            
+                                                 /' v 1.1.0-pre   
+                                                                
+  Copyright (c) 2026 AxiSEM3D developers, MIT License           
+  Source, docs, and issues: github.com/AxiSEMunity/AxiSEM3D     
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+========================== Exodus Mesh =========================
+Overview________________________________________________________
+  Exodus file           =  local_mesh__SEG_salt__5Hz.e
+  mesh CS               =  cartesian
+  model name            =  SEG_C3
+  isotropic             =  true
+  attenuation           =  true
+  storage type          =  element_nodes
+  # discontinuities     =  3
+Mesh geometry___________________________________________________
+  # elements            =  2000
+  # nodes               =  2091
+  range of s-axis       =  [0, 5000]
+  range of z-axis       =  [6.367e+06, 6.371e+06]
+Global variables________________________________________________
+  attenuation_f_max     =  10
+  attenuation_f_min     =  0.01
+  attenuation_f_ref     =  1
+  attenuation_w_0       =  0.0916863
+  attenuation_w_1       =  0.717014
+  attenuation_w_2       =  3.75883
+  attenuation_w_3       =  16.6029
+  attenuation_w_4       =  86.6272
+  attenuation_y_0       =  1.69043
+  attenuation_y_1       =  1.13589
+  attenuation_y_2       =  0.987355
+  attenuation_y_3       =  0.924257
+  attenuation_y_4       =  1.46138
+  dist_tolerance        =  0.1
+  dt (nPol = 1)         =  0.0375
+  min_edge_length       =  100
+  minimum_period        =  0.2
+  nr_lin_solids         =  5
+  crdsys                =  cartesian
+  model                 =  SEG_C3
+Element geometry________________________________________________
+  linear                :  2000
+  semi-spherical        :  0
+  spherical             :  0
+Element medium__________________________________________________
+  fluid                 :  100
+  solid                 :  1900
+Material properties_____________________________________________
+  QKAPPA                ∈  [0, 57827]
+  QMU                   ∈  [0, 600]
+  RHO                   ∈  [1000, 2000]
+  VP                    ∈  [1500, 1600]
+  VS                    ∈  [0, 1000]
+Side sets_______________________________________________________
+  solid_fluid_boundary  :  100 sides
+  x0                    :  40 sides
+  x1                    :  40 sides
+  y0                    :  50 sides
+  y1                    :  50 sides
+Miscellaneous___________________________________________________
+  ellipticity curve     :  2 knots
+----------------------------------------------------------------
+Mesh generation command line:
+>> python -m salvus_mesh_lite.interface AxiSEMCartesian --basic.model
+   input/SEG_C3.bm --basic.period .2 --cartesian2Daxisem.x 5.
+   --cartesian2Daxisem.min_z 6367.0 --attenuation.frequencies 0.01 10.
+   --output_filename input/local_mesh__SEG_salt__5Hz.e --overwrite_file
+================================================================
+
+
+============================ Geodesy ===========================
+model in Cartesian     =  true
+surface radius         =  6.371e+06
+solid surface radius   =  6.3708e+06
+bottom radius          =  6.367e+06
+a reference geographic location on the positive z-axis
+  latitude             =  90
+  longitude            =  0
+  radius               =  6.37e+06
+* No ellipticity correction for Cartesian models.
+================================================================
+
+
+====================== Absorbing Boundary ======================
+user-specified boundaries  =  [RIGHT, BOTTOM]
+those contained in mesh    =  [RIGHT, BOTTOM]
+Clayton-Enquist enabled    =  true
+Kosloff-Kosloff enabled    =  true
+Parameters for Kosloff-Kosloff__________________________________
+  * RIGHT:
+    boundary location      =  5000
+    span of sponge layer   =  250
+    range of sponge layer  =  [4750, 5000]
+  * BOTTOM:
+    boundary location      =  6.367e+06
+    span of sponge layer   =  200
+    range of sponge layer  =  [6.3672e+06, 6.367e+06]
+  * Expression for γ-factor:
+    in solid: 1.1 / T0 * (VS / VP)^2 * exp(-0.04 * SPAN / (VP * T0))
+    in fluid: 0.88 / T0 * exp(-0.04 * SPAN / (VP * T0))
+================================================================
+
+
+============================ Nr(s,z) ===========================
+type   =  CONSTANT
+value  =  1
+================================================================
+
+
+====================== Computed Nr on Mesh =====================
+min Nr  =  1
+max Nr  =  1
+ave Nr  =  1
+sum Nr  =  2091
+* Nr has been limited by inplane resolution.
+* Nr has been rounded up to FFTW lucky numbers.
+================================================================
+
+
+=========================== 3D Models ==========================
+* No 3D models in this simulation.
+================================================================
+
+
+=========================== Time Step ==========================
+Δt determined by mesh  =  0.002275
+   Courant number      =  0.5
+   location (s,z)      =  [50, 6.36705e+06]
+Δt enforced by user    =  NONE
+Δt to be used          =  0.002275
+================================================================
+
+
+========================== Attenuation =========================
+* Attenuation is turned off.
+================================================================
+
+
+===================== Computational Domain =====================
+GLL points______________________________________________________
+  FluidPoint$Mass1D              =  1809
+  SolidPoint$Mass1D              =  30753
+  Σ                              =  32562
+Spectral elements_______________________________________________
+  FluidElement$Acoustic1D        =  100
+  SolidElement$Isotropic1D       =  1900
+  Σ                              =  2000
+Axial boundary__________________________________________________
+  Solid                          =  153
+  Fluid                          =  9
+  Σ                              =  162
+Absorbing boundary______________________________________________
+  ClaytonFluid1D                 =  10
+  ClaytonSolid1D                 =  439
+  SpongeFluid                    =  90
+  SpongeSolid                    =  3058
+  Σ                              =  3597
+Fluid surface boundary__________________________________________
+  Σ                              =  201
+Solid-fluid boundary____________________________________________
+  SolidFluidCoupling1D           =  201
+  Σ                              =  201
+Domain decomposition____________________________________________
+  # sub-domains (nproc)          =  2
+  # rank-to-rank communications  =  1
+================================================================
+
+
+============================ Sources ===========================
+the_only_source ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  * This source is used to determine the reference
+    geographic location on the mesh axis.
+  Location______________________________________________________
+    latitude            =  90
+    longitude           =  0
+    depth               =  1000 (below outer surface)
+    radial geometry     =  reference
+  Source mechanism______________________________________________
+    moment tensor       =  1e+13
+                           0
+                           0
+                           0
+                           0
+                           0
+  Source-time function__________________________________________
+    class name          =  GaussianSTF
+    half duration       =  0.2
+    decay factor        =  1.628
+    time shift          =  0
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  4.5925 * Exp[-66.2596 * t ^ 2]
+================================================================
+
+
+======================== Simulation Time =======================
+Δt of simulation          =  0.002275
+t0 determined by sources  =  -0.5
+t1 specified by user      =  10
+[t0, t1] used by solver   =  [-0.5005, 10.0009]
+# time steps              =  4617
+================================================================
+
+
+======================== Station groups ========================
+* No station groups in this simulation.
+================================================================
+
+
+======================== Element groups ========================
+orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Elements______________________________________________________
+    horizontal range          =  [0, 1e+10]
+    vertical range            =  [0, 1e+10]
+  Inplane sampling______________________________________________
+    edge dimension            =  both
+    # elements found          =  1900
+    GLL points on one edge    =  [0, 2, 4]
+    # GLL points per element  =  9
+  Azimuthal sampling____________________________________________
+    * Recording on 4 azimuthal slices:
+      1) azimuth              =  0
+      2) azimuth              =  1.5708
+      3) azimuth              =  3.14159
+      4) azimuth              =  4.71239
+  Wavefields____________________________________________________
+    output coordinate system  =  RTZ
+    medium type               =  solid
+    user-specified channels   =  [U]
+    standardized channels     =  [U1, U2, U3]
+  Temporal______________________________________________________
+    sampling period
+      user-specified          =  0.05
+      rounded to Δt           =  0.047775
+    # time steps per sample   =  21
+    time window               =  [-0.5005, 10.0032]
+  File options__________________________________________________
+    buffer size               =  1000
+    flush file                =  true
+  Dimensions____________________________________________________
+    # elements                =  1900
+    # azimuthal slices        =  4
+    # GLL points              =  9
+    # channels                =  3
+    # time steps              =  220
+Fourier_coefficients_ocean_floor ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Elements______________________________________________________
+    horizontal range          =  [0, 1e+10]
+    vertical range            =  [0, 1e+10]
+  Inplane sampling______________________________________________
+    edge dimension            =  vertical
+    edge position             =  6.3708e+06
+    # element edges found     =  50
+    GLL points on one edge    =  [0, 1, 2, 3, 4]
+    # GLL points per element  =  5
+  Azimuthal sampling____________________________________________
+    * Recording all Fourier series coefficients.
+      grid space for Nr-storage  =  1
+  Wavefields____________________________________________________
+    output coordinate system  =  RTZ
+    medium type               =  solid
+    user-specified channels   =  [U]
+    standardized channels     =  [U1, U2, U3]
+  Temporal______________________________________________________
+    sampling period
+      user-specified          =  0.01
+      rounded to Δt           =  0.0091
+    # time steps per sample   =  4
+    time window               =  [-0.5005, 10.0032]
+  File options__________________________________________________
+    buffer size               =  1000
+    flush file                =  true
+  Dimensions____________________________________________________
+    # element edges           =  50
+    # Fourier series          =  variable
+    # GLL points              =  5
+    # channels                =  3
+    # time steps              =  1155
+================================================================
+
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+  time step / num total steps  =  1000 / 4617 (21%)
+
+  time step / num total steps  =  2000 / 4617 (43%)
+
+  time step / num total steps  =  3000 / 4617 (64%)
+
+  time step / num total steps  =  4000 / 4617 (86%)
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+total # time steps finished  =  4617
+
