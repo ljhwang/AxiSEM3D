@@ -1,3 +1,4 @@
-# 10 README
+# 10 Crust1_model
+This example is contained on a separate GitHub, at some point we should merge them but that is a job for a later day! 
 
-Add text from readme.txt here.
+https://github.com/benjaminfernando/axisem3d-3dmodels/tree/main
