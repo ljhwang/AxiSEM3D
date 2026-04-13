@@ -26,8 +26,6 @@ set(ADDITIONAL_LINK_OPTIONS "${links}")
 
 ################## dependencies ##################
 # preferred installation prefix of dependencies
-set(EIGEN3_ROOT                 ${eigen})
-set(BOOST_ROOT                  ${boost})
 set(FFTW_ROOT                   ${fftw})
 set(METIS_ROOT                  ${metis})
 set(NETCDF_ROOT                 ${netcdf})
@@ -69,8 +67,6 @@ endmacro()
 # set default values
 setDefault(ADDITIONAL_CXX_FLAGS        "")
 setDefault(ADDITIONAL_LINK_OPTIONS     "")
-setDefault(EIGEN3_ROOT                 "<empty>")
-setDefault(BOOST_ROOT                  "<empty>")
 setDefault(FFTW_ROOT                   "<empty>")
 setDefault(METIS_ROOT                  "<empty>")
 setDefault(NETCDF_ROOT                 "<empty>")
@@ -154,7 +150,8 @@ if(NOT SERIAL_BUILD)
 endif()
 
 # eigen
-find_package(Eigen3 3.4 REQUIRED)
+set(EIGEN3_DIR "$ENV{EIGEN3_DIR}" CACHE PATH "An optional hint to a Eigen3 installation")
+find_package(Eigen3 3.4 REQUIRED HINTS ${EIGEN3_DIR})
 include_directories(${EIGEN3_INCLUDE_DIR})
 
 # boost
@@ -163,9 +160,9 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 if(POLICY CMP0167)
   cmake_policy(SET CMP0167 NEW)
 endif()
-set(BOOST_INCLUDEDIR "${BOOST_ROOT}/include")
-set(BOOST_LIBRARYDIR "${BOOST_ROOT}/lib")
-find_package(Boost 1.85 REQUIRED)
+set(BOOST_DIR "$ENV{BOOST_DIR}" CACHE PATH "An optional hint to a Boost installation")
+find_package(Boost 1.85 REQUIRED HINTS ${BOOST_DIR})
+include_directories(${Boost_INCLUDE_DIRS})
 
 # fftw
 find_package(FFTW REQUIRED)
@@ -425,7 +422,7 @@ msglist("       linked to libraries: " "${MPI_CXX_LIBRARIES}")
 endif()
 endif()
 message("     * Eigen3")
-msglist("       user-specified root: " "${EIGEN3_ROOT}")
+msglist("       user-specified root: " "${EIGEN3_DIR}")
 msglist("       found include paths: " "${EIGEN3_INCLUDE_DIR}")
 message("     * Boost")
 msglist("       user-specified root: " "${BOOST_ROOT}")

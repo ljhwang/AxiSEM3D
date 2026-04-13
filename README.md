@@ -30,8 +30,6 @@ rm -rf build && cmake -B build \
   -Dcxx=mpicxx \
   -Dhdf5=$CONDA_PREFIX \
   -Dnetcdf=$CONDA_PREFIX \
-  -Deigen=$CONDA_PREFIX \
-  -Dboost=$CONDA_PREFIX \
   -Dfftw=$CONDA_PREFIX \
   -Dmetis=$CONDA_PREFIX
 ```
