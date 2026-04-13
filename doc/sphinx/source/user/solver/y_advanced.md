@@ -21,6 +21,8 @@ mpi:
     plot_domain_decomposition: false
 ```
 
+`weight_for_load_balancing` may be `ELEMENT_POINT` (using micro-benchmark for METIS in Stage II based on element and point evaluation), `ELEMENT` (same, but ignore point evaluation cost) or `NR` (reuse the same Nr-based weights from Stage-I without timing, this produces a reproducible partition for integration tests).
+
 **developers**
 ```
 develop:

@@ -57,7 +57,7 @@ mpi:
     # only: ELEMENT / ELEMENT_POINT
     # note: 1) ELEMENT:       use cost measurement on elements
     #       2) ELEMENT_POINT: use cost measurement on both elements and points
-    weight_for_load_balancing: ELEMENT_POINT
+    weight_for_load_balancing: NR
 
     # what: plot domain decomposition
     # type: bool

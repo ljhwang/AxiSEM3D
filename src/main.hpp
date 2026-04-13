@@ -119,7 +119,8 @@ eigen::DColX
 measureCost(const SE_Model& sem,
     const ExodusMesh& exodusMesh,
     const LocalMesh& localMesh,
-    const TimeScheme& timeScheme);
+    const TimeScheme& timeScheme,
+    bool measurePoint);
 
 // release sources
 void

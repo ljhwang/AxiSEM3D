@@ -45,11 +45,17 @@ main(int argc, char* argv[]) {
     eigen::DColX nrWeights = computeNrFieldAndWeights(*exodusMesh);
     timer::gPreloopTimer.ended("Nr(s,z) and weights", '*');
 
+    const std::string loadBalanceWeight =
+        inparam::gInparamAdvanced.getWithLimits<std::string>("mpi::weight_for_load_balancing",
+            {{"ELEMENT", "ELEMENT"}, {"ELEMENT_POINT", "ELEMENT_POINT"}, {"NR", "NR"}});
+
     // build nr-weighted local mesh
     timer::gPreloopTimer.begin("Nr-weighted local mesh", '*');
     std::unique_ptr<LocalMesh> localMesh =
         buildLocalMesh(*exodusMesh, nrWeights, "Nr(s,z)", "Stage-I");
-    nrWeights.resize(0); // free memory
+    if (loadBalanceWeight != "NR") {
+      nrWeights.resize(0); // free memory unless needed again for Stage-II NR partition
+    }
     timer::gPreloopTimer.ended("Nr-weighted local mesh", '*');
 
     // build 3D models
@@ -94,9 +100,17 @@ main(int argc, char* argv[]) {
     /////////////////////////////////////
     // Stage-II: cost-weighted domain
 
-    // measure cost
+    eigen::DColX stage2PartitionWeights;
     timer::gPreloopTimer.begin("Cost measurement", '*');
-    eigen::DColX costWeights = measureCost(*sem, *exodusMesh, *localMesh, *timeScheme);
+    if (loadBalanceWeight == "NR") {
+      timer::gPreloopTimer.message(
+          "mpi::weight_for_load_balancing: NR — skipping timing; Stage-II METIS uses Nr weights");
+      stage2PartitionWeights = nrWeights;
+    } else {
+      const bool measurePoint = (loadBalanceWeight == "ELEMENT_POINT");
+      stage2PartitionWeights =
+          measureCost(*sem, *exodusMesh, *localMesh, *timeScheme, measurePoint);
+    }
     timer::gPreloopTimer.ended("Cost measurement", '*');
 
     // free memory
@@ -106,10 +120,13 @@ main(int argc, char* argv[]) {
     domain.reset();
     timer::gPreloopTimer.ended("Freeing memory Stage-I", '*');
 
-    // build cost-weighted local mesh
+    // build Stage-II local mesh (cost- or Nr-weighted partition)
     timer::gPreloopTimer.begin("Cost-weighted local mesh", '*');
-    localMesh = buildLocalMesh(*exodusMesh, costWeights, "measured computational cost", "Stage-II");
-    costWeights.resize(0); // free memory
+    const std::string wkey =
+        (loadBalanceWeight == "NR") ? "Nr(s,z)" : "measured computational cost";
+    localMesh = buildLocalMesh(*exodusMesh, stage2PartitionWeights, wkey, "Stage-II");
+    stage2PartitionWeights.resize(0); // free memory
+    nrWeights.resize(0);
     timer::gPreloopTimer.ended("Cost-weighted local mesh", '*');
 
     // rebuild MPI-dependent 3D models
@@ -561,9 +578,8 @@ eigen::DColX
 measureCost(const SE_Model& sem,
     const ExodusMesh& exodusMesh,
     const LocalMesh& localMesh,
-    const TimeScheme& timeScheme) {
-  bool measurePoint = inparam::gInparamAdvanced.getWithLimits<bool>(
-      "mpi::weight_for_load_balancing", {{"ELEMENT", false}, {"ELEMENT_POINT", true}});
+    const TimeScheme& timeScheme,
+    bool measurePoint) {
   return sem.measureCost(exodusMesh, localMesh, timeScheme, measurePoint);
 }
 
