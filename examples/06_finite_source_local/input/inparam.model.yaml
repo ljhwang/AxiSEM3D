@@ -85,7 +85,7 @@ absorbing_boundary:
         #          an unaffected depth range from 0 to 104.5 km for normal
         #          wave propagation and analysis
         #       3) allowed range: .01 ~ 0.25
-        relative_spans: [.05, .05]
+        relative_spans: [.1, .1]
         
         # what: expression of γ-factor in solid domain
         # type: math expression
@@ -103,12 +103,12 @@ absorbing_boundary:
         #          pattern is automatically handled by the solver
         #       4) the default is an empirical expression from
         #          Haindl et al., 2020
-        gamma_expr_solid: 1.1 / T0 * (VS / VP)^2 * exp(-0.04 * SPAN / (VP * T0))
+        gamma_expr_solid: 4.4 / T0 * (VS / VP)^2 * exp(-0.08 * SPAN / (VP * T0))
         
         # what: expression of γ-factor in fluid domain
         # type: math expression
         # note: same as gamma_expr_solid but without VS dependency
-        gamma_expr_fluid: 0.88 / T0 * exp(-0.04 * SPAN / (VP * T0))
+        gamma_expr_fluid: 1.76 / T0 * exp(-0.08 * SPAN / (VP * T0))
 
 
 ######################## attenuation ########################

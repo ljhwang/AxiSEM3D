@@ -116,7 +116,7 @@ list_of_station_groups:
             # type: string / array of double
             # only: FULL / [t0, t1]
             # note: use FULL to record the whole simulation
-            time_window: FULL
+            time_window: [0, 3600]
         # file options
         file_options:
             # what: output file format

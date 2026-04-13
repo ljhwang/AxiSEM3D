@@ -144,7 +144,7 @@ list_of_station_groups:
             # note: 1) pro: minimizes data loss in case of abnormal termination
             #          con: hits output performance if buffer_size is small
             #       2) this parameter does not affect the final results
-            flush: true
+            flush: false
 
 
 ############################# element-wise #############################

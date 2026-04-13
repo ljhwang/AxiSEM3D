@@ -84,7 +84,7 @@ item_source_VIR = snippet('item_source_VIR.yaml')
 item_stations_GSN = snippet('item_stations_GSN.yaml')
 item_elements_mantle = snippet('item_elements_mantle.yaml')
 
-# Derived: on-axis monopole source (used by ex03, ex04a, ex04c)
+# Derived: on-axis monopole source (used by ex03)
 item_source_onaxis = replace_in_string(item_source_VIR,
     ['- VIRGINIA_201108231751A:',
      'latitude_longitude: [37.91, -77.93]', 'depth: 12e3',
@@ -99,11 +99,24 @@ item_source_onaxis = replace_in_string(item_source_VIR,
      'data: [1e20, 0., 0., 0., 0., 0.]',
      'half_duration: 0.1', 'use_derivative_integral: GAUSSIAN'])
 
-# Derived: USArray station group (used by ex01, ex02)
+# Derived: ON_AXIS source variant used by ex04
+item_source_onaxis_ex04 = replace_in_string(
+    item_source_onaxis,
+    ['latitude_longitude: [90., 0.]'],
+    ['latitude_longitude: ON_AXIS'])
+
+# Derived: USArray station group (used by ex00, ex01)
 item_stations_US = replace_in_string(item_stations_GSN,
     ['global_seismic_network_GSN', 'GSN.txt', 'channels: [U]',
      'format: ASCII_STATION', 'sampling_period: DT'],
     ['USArray_transportable', 'US_TA.txt', 'channels: [U3, E_I1, R3]',
+     'format: ASCII_CHANNEL', 'sampling_period: 5.'])
+
+# Derived: USArray station group for ex02, which keeps scalar ASCII stations
+item_stations_US_ex02 = replace_in_string(item_stations_GSN,
+    ['global_seismic_network_GSN', 'GSN.txt',
+     'format: ASCII_STATION', 'sampling_period: DT'],
+    ['USArray_transportable', 'US_TA.txt',
      'format: ASCII_CHANNEL', 'sampling_period: 5.'])
 
 # Derived: inplane-slice element group (used by ex03, ex04a, ex04c, ex06)
@@ -133,7 +146,8 @@ replace_in_file(jp(d, 'inparam.source.yaml'),
 
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
-                ['list_of_station_groups:\n' + item_stations_GSN])
+                ['list_of_station_groups:\n' +
+                 item_stations_GSN + '\n' + item_stations_US])
 
 
 ################ 01_S362ANI_EMC_global ################
@@ -169,10 +183,8 @@ d_share = ex_path('02_3d_crust_S362ANI_regional', 'input_share')
 copy_templates(d_share, which=['source', 'nr', 'output', 'advanced'])
 
 replace_in_file(jp(d_share, 'inparam.source.yaml'),
-                ['list_of_sources: []',
-                 'Courant_number: 0.6'],
-                ['list_of_sources:\n' + item_source_VIR,
-                 'Courant_number: 1.0'])
+                ['list_of_sources: []'],
+                ['list_of_sources:\n' + item_source_VIR])
 
 replace_in_file(jp(d_share, 'inparam.nr.yaml'),
                 ['constant: 5'],
@@ -180,7 +192,7 @@ replace_in_file(jp(d_share, 'inparam.nr.yaml'),
 
 replace_in_file(jp(d_share, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
-                ['list_of_station_groups:\n' + item_stations_US])
+                ['list_of_station_groups:\n' + item_stations_US_ex02])
 
 # input_with_1d_crust: model only (regional mesh + S362ANI)
 d_1d = ex_path('02_3d_crust_S362ANI_regional', 'input_with_1d_crust')
@@ -284,7 +296,7 @@ copy_templates(d)
 
 replace_in_file(jp(d, 'inparam.source.yaml'),
                 ['list_of_sources: []', 'record_length: 1800.'],
-                ['list_of_sources:\n' + item_source_onaxis,
+                ['list_of_sources:\n' + item_source_onaxis_ex04,
                  'record_length: 15'])
 
 replace_in_file(jp(d, 'inparam.model.yaml'),
@@ -303,11 +315,11 @@ item_stn_04a = replace_in_string(item_stations_GSN,
     ['global_seismic_network_GSN', 'GSN.txt',
      'horizontal_x1_x2: LATITUDE_LONGITUDE',
      'ellipticity: true', 'depth_below_solid_surface: true',
-     'undulated_geometry: true'],
+     'undulated_geometry: true', 'flush: true'],
     ['station_1', 'stn.txt',
      'horizontal_x1_x2: DISTANCE_AZIMUTH',
      'ellipticity: false', 'depth_below_solid_surface: false',
-     'undulated_geometry: false'])
+     'undulated_geometry: false', 'flush: false'])
 
 item_elem_04a = replace_in_string(item_elements_inplane,
     ['sampling_period: 0.05', 'buffer_size: 1000'],
@@ -331,7 +343,7 @@ replace_in_file(jp(d, 'inparam.advanced.yaml'),
 d = ex_path('04_simple_3d_shapes', 'example_release_paper', 'input')
 copy_templates(d)
 
-item_source_04b = replace_in_string(item_source_onaxis,
+item_source_04b = replace_in_string(item_source_onaxis_ex04,
     ['depth: 8000.',
      'data: [1e20, 0., 0., 0., 0., 0.]',
      'unit: 1e-7',
@@ -362,11 +374,11 @@ item_stn_04b = replace_in_string(item_stations_GSN,
     ['global_seismic_network_GSN', 'GSN.txt',
      'horizontal_x1_x2: LATITUDE_LONGITUDE',
      'ellipticity: true', 'depth_below_solid_surface: true',
-     'undulated_geometry: true'],
+     'undulated_geometry: true', 'flush: true'],
     ['station_1', 'paperstns.txt',
      'horizontal_x1_x2: DISTANCE_AZIMUTH',
      'ellipticity: false', 'depth_below_solid_surface: false',
-     'undulated_geometry: false'])
+     'undulated_geometry: false', 'flush: false'])
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
                 ['list_of_station_groups:\n' + item_stn_04b])
@@ -387,7 +399,7 @@ replace_in_file(jp(d, 'inparam.source.yaml'),
                 ['list_of_sources: []',
                  'record_length: 1800.',
                  'Courant_number: 0.6'],
-                ['list_of_sources:\n' + item_source_onaxis,
+                ['list_of_sources:\n' + item_source_onaxis_ex04,
                  'record_length: 1200',
                  'Courant_number: 0.5'])
 
@@ -404,8 +416,8 @@ replace_in_file(jp(d, 'inparam.model.yaml'),
                  'list_of_3D_models:\n' + snippet('ex04c_list_of_3D_models.yaml')])
 
 item_elem_04c = replace_in_string(item_elements_inplane,
-    ['sampling_period: 0.05'],
-    ['sampling_period: 5.0'])
+    ['sampling_period: 0.05', 'buffer_size: 1000'],
+    ['sampling_period: 5.0', 'buffer_size: 100'])
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_element_groups: []'],
                 ['list_of_element_groups:\n' + item_elem_04c])
@@ -435,10 +447,13 @@ replace_in_file(jp(d, 'inparam.model.yaml'),
                 ['exodus_mesh: AxiSEM_prem_iso_50.e',
                  'attenuation: FULL',
                  'list_of_3D_models:\n' + snippet('ex05a_list_of_3D_models.yaml')])
+replace_in_file(jp(d, 'inparam.model.yaml'),
+                ['enable_Clayton_Enquist: true'],
+                ['enable_Clayton_Enquist: false'])
 
 item_stn_05a = replace_in_string(item_stations_GSN,
-    ['global_seismic_network_GSN', 'GSN.txt'],
-    ['JW_stations', 'eq3.txt'])
+    ['global_seismic_network_GSN', 'GSN.txt', 'time_window: FULL'],
+    ['JW_stations', 'eq3.txt', 'time_window: [0, 2000]'])
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
                 ['list_of_station_groups:\n' + item_stn_05a])
@@ -448,6 +463,13 @@ replace_in_file(jp(d, 'inparam.nr.yaml'),
                  'nc_data_file: pointwise.nc'],
                 ['type_Nr: POINTWISE', 'constant: 300',
                  'nc_data_file: scanning_output_Nr.nc'])
+replace_in_file(jp(d, 'inparam.nr.yaml'),
+                ['Nr_at_control_depths: [100, 100, 50, 50]',
+                 'nc_data_file: structured.nc',
+                 'enable_scanning: false'],
+                ['Nr_at_control_depths: [100, 100, 100, 100]',
+                 'nc_data_file: bla.nc',
+                 'enable_scanning: true'])
 
 # --- 05b: sim_US32_olivineE_fullNU (same as 05a but CONSTANT Nr) ---
 d = ex_path('05_anisotropy_global',
@@ -465,6 +487,9 @@ replace_in_file(jp(d, 'inparam.model.yaml'),
                 ['exodus_mesh: AxiSEM_prem_iso_50.e',
                  'attenuation: FULL',
                  'list_of_3D_models:\n' + snippet('ex05a_list_of_3D_models.yaml')])
+replace_in_file(jp(d, 'inparam.model.yaml'),
+                ['enable_Clayton_Enquist: true'],
+                ['enable_Clayton_Enquist: false'])
 
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
@@ -473,6 +498,11 @@ replace_in_file(jp(d, 'inparam.output.yaml'),
 replace_in_file(jp(d, 'inparam.nr.yaml'),
                 ['constant: 5'],
                 ['constant: 300'])
+replace_in_file(jp(d, 'inparam.nr.yaml'),
+                ['Nr_at_control_depths: [100, 100, 50, 50]',
+                 'enable_scanning: false'],
+                ['Nr_at_control_depths: [100, 100, 100, 100]',
+                 'enable_scanning: true'])
 
 # --- 05c: deep_mantle_anisotropy ---
 d = ex_path('05_anisotropy_global',
@@ -494,12 +524,16 @@ replace_in_file(jp(d, 'inparam.model.yaml'),
                  'flattening_on_surface: SPHERE',
                  'attenuation: FULL',
                  'list_of_3D_models:\n' + snippet('ex05c_list_of_3D_models.yaml')])
+replace_in_file(jp(d, 'inparam.model.yaml'),
+                ['enable_Clayton_Enquist: true'],
+                ['enable_Clayton_Enquist: false'])
 
 item_stn_05c = replace_in_string(item_stations_GSN,
     ['global_seismic_network_GSN', 'GSN.txt',
-     'coordinate_frame: RTZ', 'channels: [U]'],
+     'coordinate_frame: RTZ', 'channels: [U]', 'time_window: FULL'],
     ['JW_stations', 'stations.txt',
-     'coordinate_frame: ENZ', 'channels: [U, G, E, S, R]'])
+     'coordinate_frame: ENZ', 'channels: [U, G, E, S, R]',
+     'time_window: [0, 3600]'])
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
                 ['list_of_station_groups:\n' + item_stn_05c])
@@ -521,6 +555,9 @@ replace_in_file(jp(d, 'inparam.model.yaml'),
                 ['exodus_mesh: AxiSEM_prem_ani_50.e',
                  'flattening_on_surface: SPHERE',
                  'attenuation: FULL'])
+replace_in_file(jp(d, 'inparam.model.yaml'),
+                ['enable_Clayton_Enquist: true'],
+                ['enable_Clayton_Enquist: false'])
 
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
@@ -545,6 +582,9 @@ replace_in_file(jp(d, 'inparam.model.yaml'),
                  'flattening_on_surface: SPHERE',
                  'attenuation: FULL',
                  'list_of_3D_models:\n' + snippet('ex05e_list_of_3D_models.yaml')])
+replace_in_file(jp(d, 'inparam.model.yaml'),
+                ['enable_Clayton_Enquist: true'],
+                ['enable_Clayton_Enquist: false'])
 
 replace_in_file(jp(d, 'inparam.output.yaml'),
                 ['list_of_station_groups: []'],
@@ -570,6 +610,13 @@ replace_in_file(jp(d, 'inparam.model.yaml'),
                 ['exodus_mesh: AxiSEMCartesian_sfba_m500_2s.e',
                  'lat_lon_north_pole_mesh: [37.7, -122.1]',
                  'list_of_3D_models:\n' + snippet('ex06_list_of_3D_models.yaml')])
+replace_in_file(jp(d, 'inparam.model.yaml'),
+                ['relative_spans: [.05, .05]',
+                 'gamma_expr_solid: 1.1 / T0 * (VS / VP)^2 * exp(-0.04 * SPAN / (VP * T0))',
+                 'gamma_expr_fluid: 0.88 / T0 * exp(-0.04 * SPAN / (VP * T0))'],
+                ['relative_spans: [.1, .1]',
+                 'gamma_expr_solid: 4.4 / T0 * (VS / VP)^2 * exp(-0.08 * SPAN / (VP * T0))',
+                 'gamma_expr_fluid: 1.76 / T0 * exp(-0.08 * SPAN / (VP * T0))'])
 
 # output: complex station + element groups from snippets
 item_stn_06 = snippet('ex06_list_of_station_groups.yaml')
@@ -586,11 +633,24 @@ replace_in_file(jp(d, 'inparam.nr.yaml'),
                  'nc_data_file: pointwise.nc'],
                 ['type_Nr: POINTWISE', 'constant: 3000',
                  'nc_data_file: SFBA_finite_rupture_Nr0.nc'])
+replace_in_file(jp(d, 'inparam.nr.yaml'),
+                ['enable_scanning: false',
+                 'output_file: scanning_output_Nr.nc',
+                 'relative_amplitude_skipped: 0.1',
+                 'absolute_amplitude_skipped: 1e-12',
+                 'max_num_peaks: 10000',
+                 'vertex_only: true'],
+                ['enable_scanning: true',
+                 'output_file: SFBA_finite_rupture_Nr_learned.nc',
+                 'relative_amplitude_skipped: 0.',
+                 'absolute_amplitude_skipped: 1e-14',
+                 'max_num_peaks: 10',
+                 'vertex_only: false'])
 
 # advanced
 replace_in_file(jp(d, 'inparam.advanced.yaml'),
-                ['loop_info_interval: 1000', 'nproc_per_group: 1'],
-                ['loop_info_interval: 100', 'nproc_per_group: 8'])
+                ['level: ESSENTIAL', 'loop_info_interval: 1000', 'nproc_per_group: 1'],
+                ['level: DETAILED', 'loop_info_interval: 100', 'nproc_per_group: 8'])
 
 
 ################ 08_atmosphere_Mars_global ################

@@ -65,7 +65,7 @@ analytical:
 
         # what: Nr at the control depths
         # type: array of double
-        Nr_at_control_depths: [100, 100, 50, 50]
+        Nr_at_control_depths: [100, 100, 100, 100]
 
     # what: any user-defined parameters for NrFieldAnalytical.cpp
     # type: any
@@ -109,9 +109,9 @@ structured:
     #          * structured_s,  double, (M, ),  s of M grid points
     #          * structured_z,  double, (N, ),  z of N grid points
     #          * structured_Nr, int,    (M, N), Nr at the M*N grid points
-    #       2) for a sphercial mesh, replace (_s, _z) with (_r, _t), t for θ
+    #       2) for a spherical mesh, replace (_s, _z) with (_r, _t), t for θ
     #       3) the unit is meter for s, z and r and radian for θ
-    nc_data_file: structured.nc
+    nc_data_file: bla.nc
 
     # what: value of Nr at any location out of the grid range
     # type: int
@@ -149,7 +149,7 @@ wavefield_scanning:
     # type: bool
     # note: enabling wavefield scanning barely slows a simulation but
     #       will increase memory usage
-    enable_scanning: false
+    enable_scanning: true
 
     # what: output file
     # type: filename

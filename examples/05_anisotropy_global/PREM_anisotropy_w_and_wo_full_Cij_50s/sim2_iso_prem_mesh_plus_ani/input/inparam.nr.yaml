@@ -109,7 +109,7 @@ structured:
     #          * structured_s,  double, (M, ),  s of M grid points
     #          * structured_z,  double, (N, ),  z of N grid points
     #          * structured_Nr, int,    (M, N), Nr at the M*N grid points
-    #       2) for a sphercial mesh, replace (_s, _z) with (_r, _t), t for θ
+    #       2) for a spherical mesh, replace (_s, _z) with (_r, _t), t for θ
     #       3) the unit is meter for s, z and r and radian for θ
     nc_data_file: structured.nc
 

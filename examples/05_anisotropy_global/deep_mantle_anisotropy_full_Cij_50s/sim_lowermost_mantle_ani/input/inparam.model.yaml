@@ -63,7 +63,7 @@ absorbing_boundary:
     # what: enable the Clayton-Enquist approach
     # type: bool
     # note: the simplest linear approach by Clayton & Engquist (1977)
-    enable_Clayton_Enquist: true
+    enable_Clayton_Enquist: false
     
     # the sponge approach by Kosloff & Kosloff (1986)
     Kosloff_Kosloff:
