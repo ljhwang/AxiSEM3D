@@ -6,7 +6,10 @@ This example collects several global anisotropy demonstrations. The scientific i
 
 - `2012-07-03_paper_example_50s/sim_US32_olivineE`
 - `2012-07-03_paper_example_50s/sim_US32_olivineE_fullNU`
-- `PREM_anisotropy_w_and_wo_full_Cij_50s/sim1_ani_prem_mesh`
+- `PREM_anisotropy_w_and_wo_full_Cij_50s/sim1_ani_prem_mesh`: input for a 50 s simulation using an anisotropic PREM mesh created with Salvus.
+- `PREM_anisotropy_w_and_wo_full_Cij_50s/sim2_iso_prem_mesh_plus_ani`: input for a 50 s simulation using an isotropic PREM mesh with anisotropy added later to reproduce anisotropic PREM.
+- `deep_mantle_anisotropy_full_Cij_50s/sim_lowermost_mantle_ani`: simulation with an isotropic PREM mesh where seismic anisotropy is added in the lowermost mantle.
+
 - `PREM_anisotropy_w_and_wo_full_Cij_50s/sim2_iso_prem_mesh_plus_ani`
 - `deep_mantle_anisotropy_full_Cij_50s/sim_lowermost_mantle_ani`
 
