@@ -13,11 +13,10 @@ Wavefield snapshot for a simulation of the Virginia earthquake (click to go to t
 
 [<img src="_static/wavefield_screenshot.png" width="500">](https://www.youtube.com/watch?v=v7_HqSzaBEg)
 
-Future extensions (interested?)
-Localised bases for azimuthal expansion; local time-stepping; GPU; improved load balancing
+Interested in contributing? Here are some areas for future development—this is, of course, non-exhaustive: localized bases for azimuthal expansion; local time-stepping; GPU acceleration; and improved load balancing.
 
 > **Note:**
-> AxiSEM3D is a community project. As such, we encourage contributions from the community to improve this code and tue manual over time.
+> AxiSEM3D is a community project. As such, we encourage contributions from the community to improve this code and the manual over time.
 
 
 
