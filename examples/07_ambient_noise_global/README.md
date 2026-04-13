@@ -1,7 +1,1 @@
-# Example 07 — Ambient Noise Global
-
-# Header 1
-
-
-## Header 2
-
+# 07 Ambient Noise Global

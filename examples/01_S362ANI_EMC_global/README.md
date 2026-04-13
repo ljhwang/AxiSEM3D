@@ -1,4 +1,4 @@
-# Example 01 Global 3D Simulation (S362ANI)
+# 01 Global 3D Simulation (S362ANI)
 
 This is an example of a global simulation using the 3D mantle model S362ANI, superimposed on a 1D PREM background. The 3D model S362ANI_percent.nc was downloaded from IRIS EMC.
 
@@ -15,11 +15,11 @@ python -m salvus_mesh_lite.interface AxiSEM --basic.model prem_ani --basic.perio
 
 To run the simulation, input the following comments:
 ```
-cp path/to/axisem3d . `
+cp path/to/axisem3d . 
 mpirun -np 4 ./axisem3d input/
 ```
 
-This simulation should take around 35 minutes on 4 cores, and the output will be written to output/ inside this folder.
+This simulation should take around 35 minutes on 4 cores, and the output will be written to `output/` inside this folder.
 
-Use **post_processing.ipynb** to visualize seismograms and USArray animations.
-To compare 1D and 3D results, first run the example in **/00_global_1D** and point the notebook to both output directories (see instructions in the notebook).
+Use `post_processing.ipynb` to visualize seismograms and USArray animations.
+To compare 1D and 3D results, first run the example in `/00_global_1D` and point the notebook to both output directories (see instructions in the notebook).

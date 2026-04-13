@@ -54,7 +54,7 @@ nbsphinx_execute = 'never'
 # a list of builtin themes.
 #
 html_theme = 'sphinx_book_theme'
-html_logo = "_static/cover-small-axisem.png"
+html_logo = "_static/cover-small-axisem3d.png"
 
 html_theme_options = {
    "collapse_navigation": True,

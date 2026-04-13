@@ -1,4 +1,4 @@
-# Example 05: Global anisotropy workflows
+# 05 Global anisotropy workflows
 
 This example collects several global anisotropy demonstrations. The scientific inputs are already staged in the subdirectories, and the launchers in this directory provide a common way to run the cases locally or through Slurm.
 
@@ -19,7 +19,7 @@ The sibling `processing/` directories describe how the anisotropic model files w
 
 1. Build AxiSEM3D at the repository root so `build/axisem3d` exists.
 2. Make sure `mpirun` works in your environment.
-3. If you use the provided shell launchers adapt or remove the Lmod module section in the shell launchers to match your site.
+3. If you use the provided shell launchers, adapt or remove the Lmod module section in the shell launchers to match your site.
 
 ## Local launcher
 

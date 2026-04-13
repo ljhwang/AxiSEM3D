@@ -1,4 +1,4 @@
-# 00 - Global 1D (PREM)
+# 00 Global 1D (PREM)
 
 
  A global simulation using a 1D PREM (anisotropic) Earth model.

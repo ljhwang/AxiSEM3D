@@ -1,7 +1,3 @@
-
-
-<img src="_static/cover-small-axisem.png" width="10%" />
-
 # AxiSEM3D
 Welcome to the wonderful world of AxiSEM3D, a flexible, high-performance computational method for solving the elastodynamic wave equation in three-dimensional, heterogeneous media. It has been used in seismology for the Earth, the Sun, the Moon, and many of other rocky planets and moons of the Solar System. 
 

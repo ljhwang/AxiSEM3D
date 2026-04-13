@@ -16,7 +16,7 @@ Parameters for 1D model (the mesh)
 
 **Section:** geodesy  
 Parameters for geodesy.  
-**parameter name**:   lat_lon_north_pole_mesh. <br>
+**parameter name**:   lat_lon_north_pole_mesh. 
 **what**:  geographic location of the north pole in the mesh.  
  **type**:  array of double / SOURCE.  
  **default:**   
@@ -28,7 +28,7 @@ compatible with Cartesian meshes
 3. SOURCE: determined this location by the FIRST source presented in list_of_sources in `inparam.source.yaml`; always use SOURCE for a single-source simulation.    
 
 
-**parameter name**:   flattening_on_surface: WGS84. <br>
+**parameter name**:   flattening_on_surface: WGS84. 
 **what**:  flattening on the surface.  
 **type**:  string / double.  
 **only**: SPHERE / WGS84 / GRS80 / SPECFEM3D_GLOBE / value.  
@@ -61,7 +61,7 @@ or axial one is non-physical)
   stress-free
 3) the most common case in seismology is [RIGHT, BOTTOM]
   
-**parameter name**:  enable_Clayton_Enquist<br>
+**parameter name**:  enable_Clayton_Enquist
 **what**:  enable the Clayton-Enquist approach.  
 **type**: bool  
 **default:**   
@@ -70,7 +70,7 @@ Note: the simplest linear approach by Clayton & Engquist (1977)
 
 **Subsection:** Kosloff_Kosloff  
  The sponge approach by Kosloff & Kosloff (1986)
-<div style="margin-left:50px;">  
+<div style="margin-left:48px;">  
 <b>parameter name</b>: enable <br>
 <b>what</b>: enable the Kosloff-Kosloff approach.  <br>
 <b>type</b>: bool  <br>
@@ -90,7 +90,7 @@ Note:
 3) allowed range: .01 ~ 0.25<br>
 </div>
 <br>
-<div style="margin-left:50px;">      
+<div style="margin-left:48px;">      
 <b>parameter name</b>: gamma_expr_solid<br>
 <b>what</b>: expression of γ-factor in solid domain<br>
 <b>type</b>: math expression<br>
@@ -115,9 +115,9 @@ pattern is automatically handled by the solvers<br>
 4) the default is an empirical expression from
 Haindl et al., 2020<br>
 </div>
-<div style="margin-left:50px;">
+<div style="margin-left:48px;">
 <br>       
-<b>parameter name</b>:   gamma_expr_fluid<br>
+<b>parameter name</b>:   gamma_expr_fluid<<br>
 <b>what</b>:  expression of γ-factor in fluid domain<br>
 <b>type</b>:math expression<br>
 <b>default:</b>  <br> 
@@ -155,7 +155,7 @@ Note:
 1) the order in this list can affect the final 3D model
 2) use [] if no 3D model presents
 
-<span style="margin-left:50px;">**key**: arbitrary names</span><br>
+<span style="margin-left:48px;">**key**: arbitrary names</span><br>
 
 <div style="margin-left:60px;">
 <b>parameter name</b>:  activated<br>
