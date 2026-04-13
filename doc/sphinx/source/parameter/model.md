@@ -16,7 +16,7 @@ Parameters for 1D model (the mesh)
 
 **Section:** geodesy  
 Parameters for geodesy.  
-**parameter name**:   lat_lon_north_pole_mesh. <br>
+**parameter name**:   lat_lon_north_pole_mesh. 
 **what**:  geographic location of the north pole in the mesh.  
  **type**:  array of double / SOURCE.  
  **default:**   
@@ -28,7 +28,7 @@ compatible with Cartesian meshes
 3. SOURCE: determined this location by the FIRST source presented in list_of_sources in `inparam.source.yaml`; always use SOURCE for a single-source simulation.    
 
 
-**parameter name**:   flattening_on_surface: WGS84. <br>
+**parameter name**:   flattening_on_surface: WGS84. 
 **what**:  flattening on the surface.  
 **type**:  string / double.  
 **only**: SPHERE / WGS84 / GRS80 / SPECFEM3D_GLOBE / value.  
@@ -70,7 +70,7 @@ Note: the simplest linear approach by Clayton & Engquist (1977)
 
 **Subsection:** Kosloff_Kosloff  
  The sponge approach by Kosloff & Kosloff (1986)
-<div style="margin-left:50px;">  
+<div style="margin-left:48px;">  
 <b>parameter name</b>: enable <br>
 <b>what</b>: enable the Kosloff-Kosloff approach.  <br>
 <b>type</b>: bool  <br>
@@ -105,7 +105,7 @@ Note: </span><br>
 - VP, VS: P- and S- wave velocities at the point<br>
 - RHO   : density at the po<br>
 </div>
-<div style="margin-left:60px;">
+<div style="margin-left:50px;">
 * VP, VS and RHO are the 1D values in the Exodus mesh<br>
 3) this expression will be further multiplied by a pattern
 function that equals to 1 on the outermost edge of the
@@ -157,12 +157,12 @@ Note:
 
 <span style="margin-left:50px;">**key**: arbitrary names</span><br>
 
-<div style="margin-left:60px;">
+<div style="margin-left:50px;">
 <b>parameter name</b>:  activated<br>
 <b>what</b>: activate this model<br>
 <b>type</b>:  bool<br>
 <b>default:</b>  <br> 
-
+<br>
 
 <b>parameter name</b>:  class_name<br>
 <b>what</b>: class name<br>
@@ -178,7 +178,7 @@ Note: current built-in classes include:
 </div>  
 <br>
 
-<div style="margin-left:60px;">
+<div style="margin-left:50px;">
 <b>parameter name</b>:  nc_data_file<br>
 <b>what</b>: NetCDF data file for SStructuredGridV3<br>
 <b>type</b>: filename<br>
@@ -190,7 +190,7 @@ Parameters for grid coordinates<br>
 </div> 
 <div style="margin-left:70px;">
 <b>parameter name</b>: horizontal<br>
-<b>what</b>:type of horizontal coordinates<br>
+<b>what</b>: type of horizontal coordinates<br>
 <b>type</b>: string<br>
 <b>only</b>: DISTANCE_AZIMUTH / XY_CARTESIAN / LATITUDE_LONGITUDE<br>
 <b>default:</b>  <br> 
@@ -257,7 +257,7 @@ the model range slightly to allow for numerical errors<br>
 3) this parameter safely realizes inplane discontinuities<br>
 <br>
 </div>
-<div style="margin-left:60px;">  
+<div style="margin-left:50px;">  
 <b>Subsection:</b>   properties    <br>    
 Parameters for properties<br>
 </div>
@@ -318,7 +318,7 @@ Note: For any property X: <br>
 p X_3D = (1 + value_in_file) * (X_3D - X_1D) + X_1D  <br> 
 </div>      
 <br> 
-<div style="margin-left:60px;">   
+<div style="margin-left:50px;">   
 <b>parameter name</b>:  store_grid_only_on_leaders<br> 
 <b>what</b>: store grid data only on the leader processors<br> 
 <b>type</b>: bool<br> 
