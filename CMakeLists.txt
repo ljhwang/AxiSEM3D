@@ -152,7 +152,7 @@ if(POLICY CMP0167)
   cmake_policy(SET CMP0167 NEW)
 endif()
 set(BOOST_DIR "$ENV{BOOST_DIR}" CACHE PATH "An optional hint to a Boost installation")
-find_package(Boost 1.85 REQUIRED HINTS ${BOOST_DIR})
+find_package(Boost 1.83 REQUIRED HINTS ${BOOST_DIR})
 include_directories(${Boost_INCLUDE_DIRS})
 
 # FFTW3 (optional prefix: -DFFTW3_DIR= or env FFTW3_DIR; legacy -Dfftw= still accepted)
