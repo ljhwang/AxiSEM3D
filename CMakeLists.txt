@@ -29,14 +29,12 @@ set(ADDITIONAL_LINK_OPTIONS "${links}")
 set(USE_PARALLEL_NETCDF OFF CACHE BOOL "If ON, use parallel NetCDF. Optional.")
 
 ################## solver options ##################
-# polynomial order of spectral elements (from 1 to 8)
-set(NPOL_SEM                    ${npol})
+set(NPOL_SEM "4" CACHE STRING "polynomial order of spectral elements (from 1 to 8)")
 
 # solver precision
 # using double precision doubles runtime memory and output size but
 # affects performance only slightly on a modern 64-bit architecture
-set(USE_DOUBLE                  ${double})
-
+set(USE_DOUBLE OFF CACHE BOOL "If ON use double precision, otherwise single")
 
 ########################################################################
 ###################### Build Settings (EDIT ABOVE) #####################
@@ -59,8 +57,6 @@ endmacro()
 # set default values
 setDefault(ADDITIONAL_CXX_FLAGS        "")
 setDefault(ADDITIONAL_LINK_OPTIONS     "")
-setDefault(NPOL_SEM                    4)
-setDefault(USE_DOUBLE                  OFF)
 
 
 ################# cmake setup #################
@@ -378,7 +374,7 @@ if(NUMDIFF_EXECUTABLE AND EXISTS "${PROJECT_SOURCE_DIR}/tests")
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/screen-output.diff)
 
     add_dependencies(tests.${_testname} tests.${_testname}.screen-output.diff)
-    
+
     # find all files under reference/; paths are relative to reference/
     file(GLOB_RECURSE _reference_files
          RELATIVE "${_testfolder}/reference"
