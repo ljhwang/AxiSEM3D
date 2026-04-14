@@ -138,7 +138,11 @@ endif()
 
 # eigen
 set(EIGEN3_DIR "$ENV{EIGEN3_DIR}" CACHE PATH "An optional hint to a Eigen3 installation")
-find_package(Eigen3 3.4 REQUIRED HINTS ${EIGEN3_DIR})
+find_package(Eigen3 3.4 HINTS ${EIGEN3_DIR})
+if (NOT Eigen3_FOUND)
+  message(STATUS "Eigen3 CMake package not found; using FindEigen3.cmake fallback...")
+  find_package(Eigen3 REQUIRED MODULE)
+endif()
 include_directories(${EIGEN3_INCLUDE_DIR})
 
 # boost
