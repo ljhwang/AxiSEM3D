@@ -7,7 +7,7 @@ AxiSEM3D is being developed by a large, collaborative, and inclusive community. 
 This community is led by a group of Principal Developers who are active in developing code, reviewing code, contributing to the documentation, helping users on the online forums and in person, and in many other visible and invisible ways. They are: 
 
 - Kuangdai Leng (EarthRover Program) - Lead Developer
-- Benjamin Fernando (Johns Hopkins University) - Project Manager
+- Benjamin Fernando (Los Alamos National Laboratory) - Project Manager
 - Jonathan Wolf (University of California, Berkeley)
 - Timo Heister (Clemson University)
 - Lorraine Hwang (University of California, Davis)
