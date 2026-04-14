@@ -83,38 +83,82 @@ Bibtex:
     }
 
 
-If relevant cite one or more of the following as well:
+If relevant, cite one or more of the following as well:
 
-<span style="color: red;"><b>*** TO DO:ADD BIBTEKS</b></span>
-
-
-
-	Leng, Korenaga, Nissen-Meyer, 2020. Three-dimensional scattering of elastic waves by small-scale heterogeneities in the Earth’s mantle, Geophysical Journal International, 223, 1, 502–525, https://doi.org/10.1093/gji/ggaa331
-
-    Szenicer, Leng, Nissen-Meyer, 2020. A complexity-driven approach towards global waveform tomography, Geophysical Journal International, https://doi.org/10.1093/gji/ggaa349
-
-
-    Haindl, Leng, Nissen-Meyer, 2021. A 3D Complexity-Adaptive Approach to Explore Sparsity in Visco-Elastic Wave Propagation, Geophysics, 86, 1, T331-T335, https://doi.org/10.1190/geo2020-0490.1
-
-        @article{Haindl2021,
-        title = {A 3D complexity-adaptive approach to explore sparsity in elastic wave propagation},
-        volume = {86},
-        ISSN = {1942-2156},
-        url = {http://dx.doi.org/10.1190/geo2020-0490.1},
-        DOI = {10.1190/geo2020-0490.1},
-        number = {5},
-        journal = {Geophysics},
-        publisher = {Society of Exploration Geophysicists},
-        author = {Haindl,  Claudia and Leng,  Kuangdai and Nissen-Meyer,  Tarje},
-        year = {2021},
-        month = may,
-        pages = {T321–T335}
+	@article{Leng2020,
+    author = {Leng, K and Korenaga, J and Nissen-Meyer, T},
+    title = {3-D scattering of elastic waves by small-scale heterogeneities in the Earth's mantle},
+    journal = {Geophysical Journal International},
+    volume = {223},
+    number = {1},
+    pages = {502--525},
+    year = {2020},
+    month = jul,
+    issn = {0956-540X},
+    doi = {10.1093/gji/ggaa331},
+    url = {https://doi.org/10.1093/gji/ggaa331},
+    eprint = {https://academic.oup.com/gji/article-pdf/223/1/502/33518142/ggaa331.pdf}
     }
 
-    Tesoniero, Leng, Longs, Nissen-Meyer, 2020. Full wave sensitivity of SK(K)S phases to arbitrary anisotropy in the upper and lower mantle, Geophysical Journal International, 222, 412–435, https://doi.org/10.1093/gji/ggaa171
+    @article{Szenicer2020,
+    author = {Szenicer, Alexandre and Leng, Kuangdai and Nissen-Meyer, Tarje},
+    title = {A complexity-driven framework for waveform tomography with discrete adjoints},
+    journal = {Geophysical Journal International},
+    volume = {223},
+    number = {2},
+    pages = {1247--1264},
+    year = {2020},
+    month = jul,
+    issn = {0956-540X},
+    doi = {10.1093/gji/ggaa349},
+    url = {https://doi.org/10.1093/gji/ggaa349},
+    eprint = {https://academic.oup.com/gji/article-pdf/223/2/1247/33763352/ggaa349.pdf}
+    }
+          
+    @article{Haindl2021,
+    title = {A 3D complexity-adaptive approach to explore sparsity in elastic wave propagation},
+    volume = {86},
+    ISSN = {1942-2156},
+    url = {http://dx.doi.org/10.1190/geo2020-0490.1},
+    DOI = {10.1190/geo2020-0490.1},
+    number = {5},
+    journal = {Geophysics},
+    publisher = {Society of Exploration Geophysicists},
+     author = {Haindl,  Claudia and Leng,  Kuangdai and Nissen-Meyer,  Tarje},
+    year = {2021},
+    month = may,
+    pages = {T321–T335}
+    }
 
-    Fernando, Leng, Nissen-Meyer, 2020. Oceanic high-frequency global seismic wave propagation with realistic bathymetry, Geophysical Journal International, 222, 1178–1194, https://doi.org/10.1093/gji/ggaa248
+    @article{Tesoniero2020,
+    author = {Tesoniero, Andrea and Leng, Kuangdai and D. Long, Maureen and Nissen-Meyer, Tarje},
+    title = {Full wave sensitivity of SK(K)S phases to arbitrary anisotropy in the upper and lower mantle},
+    journal = {Geophysical Journal International},
+    volume = {222},
+    number = {1},
+    pages = {412-435},
+    year = {2020},
+    month = {07},
+    issn = {0956-540X},
+    doi = {10.1093/gji/ggaa171},
+    url = {https://doi.org/10.1093/gji/ggaa171},
+    eprint = {https://academic.oup.com/gji/article-pdf/222/1/412/33181794/ggaa171.pdf},
+    }
 
+    @article{Fernando2020,
+    author = {Fernando, Benjamin and Leng, Kuangdai and Nissen-Meyer, Tarje},
+    title = {Oceanic high-frequency global seismic wave propagation with realistic bathymetry},
+    journal = {Geophysical Journal International},
+    volume = {222},
+    number = {2},
+    pages = {1178-1194},
+    year = {2020},
+    month = {08},
+    issn = {0956-540X},
+    doi = {10.1093/gji/ggaa248},
+    url = {https://doi.org/10.1093/gji/ggaa248},
+    eprint = {https://academic.oup.com/gji/article-pdf/222/2/1178/33341061/ggaa248.pdf},
+    }   
 
 ### Data Availability
 We strongly recommend making your data available for reproducibility and replicability. Consider depositing your data (code, parameter files, data, log files, ...) in an approved repository, which will assign an identifier (e.g. a DOI) and enable citation of your data. See [geodynamics.org software publishing guidance](https://geodynamics.org/software/software-bp/software-publishing).
