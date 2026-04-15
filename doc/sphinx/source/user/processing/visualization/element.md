@@ -1,15 +1,13 @@
 
-# Element Output 
+# Element Output
 
-Rather than obtaining seismograms for specific stations, you may want to save seismic wavefields on more general portions of the mesh. AxiSEM3D allows you to do this with the element output, through which you can save wavefields on given elements through the mesh, specified by ranges. Similarly to station groups seen earlier, you can pass a list of element groups, e.g. defining azimuthal slices, or cuts at a given depth. 
+Rather than obtaining seismograms for specific stations, you may want to save seismic wavefields on more general portions of the mesh. AxiSEM3D allows you to do this with the element output, through which you can save wavefields on given elements through the mesh, specified by ranges. Similarly to station groups seen earlier, you can pass a list of element groups, e.g. defining azimuthal slices, or cuts at a given depth.
 
-<span style="color: red;"><b>*** TO DO: Fix link</b> </span>
+Let us look at a real input file that you can find in [this example](https://github.com/AxiSEMunity/AxiSEM3D/blob/main/examples/03_salt_body_SEG_local/input1D/inparam.output.yaml) of a 5s run in a salt model on a cartesian mesh, and go through each option.
 
-Let us look at a real input file that you can find in [this example](https://github.com/kuangdai/AxiSEM-3D/blob/master/examples/03_Cartesian_SEG_EAGE_salt_5Hz/input1D/inparam.output.yaml) of a 5s run in a salt model on a cartesian mesh, and go through each option. 
+You can see that in this example, `list_of_elements_group` contains two entries indexed by dashes:
 
-You can see that in this example, `list_of_elements_group` contains two entries indexed by dashes: 
-
-`- orthogonal_azimuthal_slices` and `- Fourier_coefficients_ocean_floor`. Each of those entries have the same parameters that need setting, and we will now go through them in detail. 
+`- orthogonal_azimuthal_slices` and `- Fourier_coefficients_ocean_floor`. Each of those entries have the same parameters that need setting, and we will now go through them in detail.
 
 ---
 
@@ -60,5 +58,5 @@ These parameters are the same as for the "Stations output" section.
 
 These parameters are the same as for the "Stations output" section, with the exception that the only available file format is NetCDF.
 
- 
+
 
