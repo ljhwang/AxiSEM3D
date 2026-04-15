@@ -1,13 +1,12 @@
 # Station Output
 
-A standard reason to run a forward model is to obtain seismograms at given locations on the planet, e.g. corresponding to the locations of real seismic stations. In AxiSEM3D you can pass a list of so called station groups that will define the desired locations and outputs. A station group can for instance be the global seismic network containing all the corresponding stations, or the US array, or even a collection of stations bearing no connection to reality. 
+A standard reason to run a forward model is to obtain seismograms at given locations on the planet, e.g. corresponding to the locations of real seismic stations. In AxiSEM3D you can pass a list of so called station groups that will define the desired locations and outputs. A station group can for instance be the global seismic network containing all the corresponding stations, or the US array, or even a collection of stations bearing no connection to reality.
 
-<span style="color: red;"><b>*** TO DO: Fix link</b> </span>
-Let us look at a real input file that you can find in [this example](https://github.com/kuangdai/AxiSEM-3D/tree/master/examples/01_spherical_Earth_PREM_50s/input/inparam.output.yaml) of a 50s run in PREM, and go through each option. 
+Let us look at a real input file that you can find in [this example](https://github.com/AxiSEMunity/AxiSEM3D/blob/main/examples/01_S362ANI_EMC_global/input/inparam.output.yaml) of a 50s run in PREM, and go through each option.
 
-You can see that in this example, `list_of_stations_group` contains two entries indexed by dashes: 
+You can see that in this example, `list_of_stations_group` contains two entries indexed by dashes:
 
-`- global_seismic_network_GSN` and `- USArray_transportable`. Each of those entries have the same parameters that need setting, and we will now go through them in detail. 
+`- global_seismic_network_GSN` and `- USArray_transportable`. Each of those entries have the same parameters that need setting, and we will now go through them in detail.
 
 **`locations`**
 
@@ -27,7 +26,7 @@ If `horizontal_x1_x2` is set to "LATITUDE_LONGITUDE", setting `ellipticity` to "
 If the vertical coordinate of stations is set to "DEPTH", choosing "true" for `depth_below_solid_surface` will use the solid surface as the origin.
 
 - `undulated_geometry`:
-If set to "true", the vertical coordinate of stations (either "DEPTH" or "RADIUS") will be determined with respect to the undulated geometry, otherwise with respect to the reference geometry. 
+If set to "true", the vertical coordinate of stations (either "DEPTH" or "RADIUS") will be determined with respect to the undulated geometry, otherwise with respect to the reference geometry.
 
 **`wavefields`**
 
@@ -38,7 +37,7 @@ We have now set all the parameters that determine the location of the stations, 
 - `medium`: Choose from "SOLID" or "FLUID". `medium` determines whether the stations are contained in a solid or a fluid medium. Note that within a given station group, all stations must belong to the same medium.
 
 - channels:
-  
+
   - Channels available when `medium` set to "SOLID":
     - displacement: U, U1, U2, U3, U_NORM (or |U|)
     - gradient of displacement: G, G11, G12, G13, G21, G22, G23, G31, G32, G33, Gii (or G_I1)
@@ -57,7 +56,7 @@ We have now set all the parameters that determine the location of the stations, 
 
 After having determined where and what we want to output, we need to specify how much of it we want.
 
-- `sampling_period`: Choose from "DT", "DTx2", "DTx3", etc. "DT" stands for the time step in the simulation, hence choosing "DT" will perform no temporal downsampling, "DTx2" will output every other time step, etc. 
+- `sampling_period`: Choose from "DT", "DTx2", "DTx3", etc. "DT" stands for the time step in the simulation, hence choosing "DT" will perform no temporal downsampling, "DTx2" will output every other time step, etc.
 
 - `time_window`: Choose "FULL" to record the whole simulation, or specify a time window [t0,t1].
 
