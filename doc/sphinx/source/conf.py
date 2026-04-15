@@ -34,8 +34,15 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinxcontrib.bibtex",
-    "myst_parser"
+    "myst_parser",
+    "sphinx.ext.mathjax",
 ]
+
+myst_enable_extensions = [
+    "dollarmath",
+]
+
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

@@ -35,11 +35,6 @@ sin (*x*) depending on how accurate we want the solution to be:
 sometimes sin (*x*) = *x* is appropriate, sometimes we need $\sin(x) = x - \frac{x}{3!}$ 
 is fine, and sometimes we need more terms.
 
-<span style="color: red;"><b>*** TO DO: fix math
-
-</b></span>
-
-
 This is how AxiSEM3D works: it turns out a Fourier order of 0 is
 sufficient for a radially symmetric (‘1D’) seismic profile with an
 implosive/explosive source, 1 is sufficient for a dipole, and 2 for a
