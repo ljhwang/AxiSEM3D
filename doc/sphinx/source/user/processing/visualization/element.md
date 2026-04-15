@@ -1,4 +1,3 @@
-
 # Element Output
 
 Rather than obtaining seismograms for specific stations, you may want to save seismic wavefields on more general portions of the mesh. AxiSEM3D allows you to do this with the element output, through which you can save wavefields on given elements through the mesh, specified by ranges. Similarly to station groups seen earlier, you can pass a list of element groups, e.g. defining azimuthal slices, or cuts at a given depth.
