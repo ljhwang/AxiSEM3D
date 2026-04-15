@@ -1,4 +1,4 @@
-# Physical Constraints 
+# Physical Constraints
 When designing AxiSEM3D simulations, or running them, it is worth
 bearing in mind what the limitations of the code are and what they might
 mean for this project. We will briefly detail those relevant here:
@@ -29,13 +29,13 @@ the water column in a non-uniform way across the whole surface using the
 ‘ocean load approximation’ or by deforming the physical water layer as
 described in the particle relabelling section below.
 
-## Discontinuities 
+## Discontinuities
 
 AxiSEM3D allows you to insert any discontinuity you might want into your
-‘base’ (1D) structural model: the Moho, the CMB, 410/660 km, the
-seafloor, etc. You can also <span style="color: red;"><b>*** TO DO: insert link to next section </b></span>undulate these boundaries (Leng et al., 2019; Fernando et al., 2020)
-to represent the variation in depth of a particular boundary with
-location.
+‘base’ (1D) structural model: the Moho, the CMB, 410/660 km, the seafloor,
+etc. You can also [undulate these boundaries](https://axisem3d.readthedocs.io/en/latest/methods/undulations.html)
+(Leng et al., 2019; Fernando et al., 2020) to represent the variation in
+depth of a particular boundary with location.
 
 However, this undulation remains subject to a very important
 constraint - the undulated configuration must remain homeomorphic to the
