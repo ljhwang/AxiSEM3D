@@ -58,3 +58,36 @@ jobs:
         run: |
           source $CONDA/etc/profile.d/conda.sh && conda activate axisem3d
           python -m salvus_mesh_lite.interface AxiSEM
+
+  linux-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup
+        run: |
+          sudo apt-get update && \
+            sudo DEBIAN_FRONTEND='noninteractive' \
+            DEBCONF_NONINTERACTIVE_SEEN='true' \
+            apt-get install --yes \
+              build-essential \
+              git \
+              curl \
+              python3-pip \
+              cmake \
+              openmpi-bin \
+              libopenmpi-dev \
+              libeigen3-dev \
+              libboost-all-dev \
+              libmetis-dev \
+              netcdf-bin \
+              libnetcdf-dev \
+              libfftw3-dev \
+              libhdf5-dev
+      - name: Configure and build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make -j 4
+      - name: Check executable
+        run: ./build/axisem3d --help
