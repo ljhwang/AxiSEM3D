@@ -31,6 +31,13 @@ python -m salvus_mesh_lite.interface AxiSEM \
     --output_filename tayak_atm_10s.e
 ```
 
+For this Mars example, use the example-local pipeline in
+`axisem3d_mars_atm/gen_mesh.sh` instead of meshing the raw `.bm` file
+directly. It first rewrites the atmosphere branch onto a denser,
+positivity-preserving radius grid and then validates that the generated Exodus
+mesh has strictly positive fluid `RHO_*` corner fields before the solver is
+run.
+
 I recommend checking this in Paraview to make sure that vs drops to zero where you think it should, and getting a feel for how much lower dt is in the atmosphere as compared to the ground (which is in a way a measure of inefficiency).
 
 ### 2.3 The inparam files
