@@ -42,14 +42,13 @@ echo $HDF5_ROOT
 You can then configure the build using these variables directly:
 
 ```bash
-rm -rf build && cmake -S ./SOLVER -B build \
-  -Dcxx=mpicxx \
-  -Dhdf5=$HDF5_ROOT \
-  -Dnetcdf=$NETCDF_ROOT \
-  -Deigen=$EIGEN3_ROOT \
-  -Dboost=$BOOST_ROOT \
-  -Dfftw=$FFTW_ROOT \
-  -Dmetis=$METIS_ROOT
+rm -rf build && cmake -B build \
+  -D HDF5_DIR=$HDF5_ROOT \
+  -D NETCDF_DIR=$NETCDF_ROOT \
+  -D EIGEN3_DIR=$EIGEN3_ROOT \
+  -D BOOST_DIR=$BOOST_ROOT \
+  -D FFTW3_DIR=$FFTW_ROOT \
+  -D METIS_DIR=$METIS_ROOT
 ```
 
 > If your cluster does not provide these variables, you can inspect module paths via `module show <package>`.
