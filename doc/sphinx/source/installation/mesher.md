@@ -1,21 +1,9 @@
 
 # The Mesher
 
-The mesher is a stand-alone package that is not distributed along
-with the rest of the AxiSEM3D distribution.
-The easiest way to install **SalvusMeshLite** is via `pip`:
+The mesher is now part of the AxiSEMunity and is automatically installed when creating the `axisem3d` Conda environment from `environment.yml`.
 
-```bash
-pip install https://gitlab.com/Salvus/SalvusMeshLite/-/archive/master/SalvusMeshLite-master.zip
-```
+To install the package separately see the repository [salvus_mesh_lite](https://github.com/AxiSEMunity/salvus_mesh_lite)
 
-Verify the installation:
-
-```bash
-python -m salvus_mesh_lite.interface -h
-```
-
-This command displays all available mesher options.
-
-You can find more information about the Salvus family of packages here:
+The AxiSEMunity repository is maintained separately from the Salvus family of packages. For more information about the original SalvusMeshLite project, see
 [SalvusMeshLite](https://gitlab.com/swp_ethz/public/SalvusMeshLite).
