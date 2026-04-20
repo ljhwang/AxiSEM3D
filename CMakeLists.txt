@@ -367,8 +367,8 @@ if(NUMDIFF_EXECUTABLE AND EXISTS "${PROJECT_SOURCE_DIR}/tests")
     COMMAND test -f ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/runs
     COMMAND ${CMAKE_SOURCE_DIR}/cmake/diff_test.sh
             ${NUMDIFF_EXECUTABLE}
-            ${_testfolder}/screen-output
             ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/screen-output
+            ${_testfolder}/screen-output
     DEPENDS ${_testfolder}/screen-output ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/screen-output)
     add_custom_target(tests.${_testname}.screen-output.diff
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/screen-output.diff)
@@ -388,8 +388,8 @@ if(NUMDIFF_EXECUTABLE AND EXISTS "${PROJECT_SOURCE_DIR}/tests")
       add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/${_nice_name}.diff
       COMMAND ${CMAKE_SOURCE_DIR}/cmake/diff_test.sh
               ${NUMDIFF_EXECUTABLE}
-              ${_testfolder}/reference/${_reference_file}
               ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/output/${_reference_file}
+              ${_testfolder}/reference/${_reference_file}
       DEPENDS ${_testfolder}/reference/${_reference_file} ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/screen-output)
       add_custom_target(tests.${_testname}.${_nice_name}.diff
       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/tests/${_testname}/${_nice_name}.diff)
