@@ -4,14 +4,14 @@
 
 The question of which modelling software you ought to be using probably
 has no definite or finite-length answer. However, the common pieces of
-software used for global wavefield simulations include SPECFEM (Komatitsch and Tromp, 2020a;
-Komatitsch and Tromp, 2020b),
-AxiSEM3D (Leng et al., 2016; 2019), and Salvus.
+software used for global wavefield simulations include SPECFEM 
+{cite:p}`Komatitsch2002a, Komatitsch2002b`,
+AxiSEM3D {cite:p}`Leng2016, Leng2019`, and Salvus.
 
 There are also normal-mode codes such as MINEOS which are very different
 in implementation and functionality to AxiSEM3D, SPECFEM, and Salvus
 (which are all spectral-element based codes), but nonetheless useful if
-you are looking at normal modes, gravity or ellipticity, and so on (Panning et al., 2017).
+you are looking at normal modes, gravity or ellipticity, and so on {cite:p}`Panning2017`.
 
 Before undertaking any
 synthetic studies, it is worth deciding upon what functionality is
@@ -21,7 +21,7 @@ with limitations on how complex a scenario you are able to simulate.
 
 If you are:
 * planning to calculate global wavefields for simple 1D
-models at high frequencies such as PREM (Dziewonski and Anderson, 1981), AxiSEM3D is the most
+models at high frequencies such as PREM {cite:p}`Dziewonski1981`, AxiSEM3D is the most
 efficient way to do it.
 
 * interested in the global 5s resolution wavefield in the

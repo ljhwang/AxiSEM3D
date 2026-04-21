@@ -34,7 +34,7 @@ described in the particle relabelling section below.
 AxiSEM3D allows you to insert any discontinuity you might want into your
 ‘base’ (1D) structural model: the Moho, the CMB, 410/660 km, the seafloor,
 etc. You can also [undulate these boundaries](https://axisem3d.readthedocs.io/en/latest/methods/undulations.html)
-(Leng et al., 2019; Fernando et al., 2020) to represent the variation in
+{cite:p}`Leng2019, Fernando2020` to represent the variation in
 depth of a particular boundary with location.
 
 However, this undulation remains subject to a very important

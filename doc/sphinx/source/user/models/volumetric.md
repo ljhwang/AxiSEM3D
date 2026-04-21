@@ -106,10 +106,10 @@ anisotropy, scripts exist in the `05_anisotropy_global` example folder
 in the AxiSEM3D GitHub page. AxiSEM3D is capable of calculating
 synthetics for input models that include arbitrary anisotropy, described
 by the the full elastic tensor *C*<sub>*ij*</sub>. Example papers that
-do this are Tesoniero et al. (2020) and  Wolf et al. (2022b,, 2023a).
+do this are {cite:t}`Tesoniero2020` and {cite:t}`Wolf2022b, Wolf2022a`.
 
 To start using seismically anisotropic volumetric models, we suggest
-repeating the exercise from Tesoniero et al. (2020) who calculated seismograms for anisotropic
+repeating the exercise from {cite:t}`Tesoniero2020` who calculated seismograms for anisotropic
 PREM in two different ways:
 
 - For a “prem_ani” mesh. (Approach 1)
@@ -139,7 +139,7 @@ tensor around the vertical (or radius) axis does not matter. In general
 though, if more complicated seismic anisotropy is implemented into the
 input model, this orientation will be crucial. In AxiSEM3D seismic
 anisotropy is implemented such that the one of the horizontal axes of
-the elastic tensor (specifically, x-axis in MSAT, Walker and Wookey, 2012) is aligned with
+the elastic tensor (specifically, x-axis in MSAT, {cite:t}`Walker2012is aligned with
 the north direction. To explore this, it is useful to implement a
 horizontally transversely isotropic elastic tensor into an input model,
 for example by rotating the PREM-anisotropy by 90 °. For this case the

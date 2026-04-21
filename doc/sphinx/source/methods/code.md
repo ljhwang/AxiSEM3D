@@ -5,7 +5,7 @@ The mesher is written in Python, and the solver in modern C++ while relying on M
 
  ## Languages 
 
-The AxiSEM3D code (Lent et al., 2016;2019) is written in the **C++** programming language.
+The AxiSEM3D code {cite:p}`Leng2016, Leng2019` is written in the **C++** programming language.
 Various sub-routines involve Fortran, and some of the pre- and
 post-processing codes are supplied in Python or Matlab. Input files are
 human-readable text files, and no particular programming languages are
@@ -13,7 +13,7 @@ required to understand and use them.
 
 The casual user will not need to edit the source code, and as such, no
 familiarity with C++ is required. You may see references elsewhere to
-the ‘old’ AxiSEM code (Nissen-Meuyer et al., 2014), which is written in Fortran. You do not need
+the ‘old’ AxiSEM code {cite:p}`Nissen-Meyer2014`, which is written in Fortran. You do not need
 to be familiar with either old AxiSEM or Fortran to run AxiSEM3D.
 
 ## Understanding inputs and outputs 
@@ -36,7 +36,7 @@ plot.
 
 If you are not biased either way, we suggest doing post-processing in
 **Python**, since you can then make use of the enormous functionality
-offered by the **ObsPy** (Beyreuther et al., 2010) package.
+offered by the **ObsPy** {cite:p}`Beyreuther2010` package.
 
 ## AxiSEM3D architecture 
 
