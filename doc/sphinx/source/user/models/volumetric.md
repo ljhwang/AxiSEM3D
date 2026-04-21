@@ -139,7 +139,7 @@ tensor around the vertical (or radius) axis does not matter. In general
 though, if more complicated seismic anisotropy is implemented into the
 input model, this orientation will be crucial. In AxiSEM3D seismic
 anisotropy is implemented such that the one of the horizontal axes of
-the elastic tensor (specifically, x-axis in MSAT, {cite:t}`Walker2012is aligned with
+the elastic tensor (specifically, x-axis in MSAT, {cite:t}`Walker2012` is aligned with
 the north direction. To explore this, it is useful to implement a
 horizontally transversely isotropic elastic tensor into an input model,
 for example by rotating the PREM-anisotropy by 90 °. For this case the
