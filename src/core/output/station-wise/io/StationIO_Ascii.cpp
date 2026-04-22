@@ -41,7 +41,7 @@ StationIO_Ascii::initialize(const std::string& groupName,
 
   // precesion
   int precisionTime = 16;
-#ifdef _USE_DOUBLE
+#ifdef AXISEM3D_USE_DOUBLE
   int precisionWave = 16;
 #else
   int precisionWave = 8;

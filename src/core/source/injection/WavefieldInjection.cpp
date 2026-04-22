@@ -187,7 +187,7 @@ WavefieldInjection::initializeSTFs(const std::string& ncFileNameSolid,
   // file
   mReaderSolid = std::make_shared<NetCDF_Reader>();
   mReaderFluid = std::make_shared<NetCDF_Reader>();
-#ifdef _USE_PARALLEL_NETCDF
+#ifdef AXISEM3D_USE_PARALLEL_NETCDF
   mReaderSolid->openParallel(ncFileNameSolid);
   mReaderFluid->openParallel(ncFileNameFluid);
 #else

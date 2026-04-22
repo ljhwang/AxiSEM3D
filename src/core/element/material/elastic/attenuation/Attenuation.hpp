@@ -13,7 +13,7 @@
 #define Attenuation_hpp
 
 // dmu * 2
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
 // computed on the fly as static variables
 #define xDMu2 sDMu2
 #else

@@ -37,7 +37,7 @@ NetCDF_Writer::open(const std::string& fname, bool overwrite) {
 // open parallel
 void
 NetCDF_Writer::openParallel(const std::string& fname) {
-#ifdef _USE_PARALLEL_NETCDF
+#ifdef AXISEM3D_USE_PARALLEL_NETCDF
   close();
   if (nc_open_par(fname.c_str(),
           NC_MPIIO | NC_WRITE | NC_NETCDF4,

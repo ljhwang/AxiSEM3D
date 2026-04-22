@@ -16,7 +16,7 @@
 #include <map>
 #include "eigen.hpp"
 
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
 // mpi.h has extern "C" {} internally
 #include <mpi.h>
 #else
@@ -35,7 +35,7 @@
 namespace mpi {
   ////////////////////////////// internal //////////////////////////////
   namespace internal {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     // group superior
     extern MPI_Comm iCommSuper;
     // group inferior
@@ -53,7 +53,7 @@ namespace mpi {
     extern bool iSuper;
 
     //////// data type ////////
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     // datatype covertion, e.g., int -> MPI_INT
     template <typename T>
     inline MPI_Datatype
@@ -123,7 +123,7 @@ namespace mpi {
   // number of processors
   inline int
   nproc() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     static int nproc;
     MPI_Comm_size(internal::iCommCurrent, &nproc);
     return nproc;
@@ -135,7 +135,7 @@ namespace mpi {
   // MPI rank
   inline int
   rank() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     static int rank;
     MPI_Comm_rank(internal::iCommCurrent, &rank);
     return rank;
@@ -147,7 +147,7 @@ namespace mpi {
   // number of processors in World
   inline int
   nprocWorld() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     static int nproc;
     MPI_Comm_size(MPI_COMM_WORLD, &nproc);
     return nproc;
@@ -159,7 +159,7 @@ namespace mpi {
   // MPI rank in World
   inline int
   rankWorld() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     static int rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     return rank;
@@ -179,7 +179,7 @@ namespace mpi {
   // enter world group level
   inline void
   enterWorld() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     internal::iCommCurrent = MPI_COMM_WORLD;
 #endif
   }
@@ -187,7 +187,7 @@ namespace mpi {
   // enter super group level
   inline void
   enterSuper() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     internal::iCommCurrent = internal::iCommSuper;
 #endif
   }
@@ -195,7 +195,7 @@ namespace mpi {
   // enter infer group level
   inline void
   enterInfer() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     internal::iCommCurrent = internal::iCommInfer;
 #endif
   }
@@ -225,7 +225,7 @@ namespace mpi {
   template <typename T>
   void
   bcast(T* valptr, int size, int src = 0) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Bcast(valptr, size, internal::typeMPI<T>(), src, internal::iCommCurrent);
 #endif
   }
@@ -318,7 +318,7 @@ namespace mpi {
   template <typename EigenMat>
   void
   isend(int dest, const EigenMat& mat, MPI_Request& request) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Isend(mat.data(),
         (int)mat.size(),
         internal::typeMPI<typename EigenMat::Scalar>(),
@@ -333,7 +333,7 @@ namespace mpi {
   template <typename EigenMat>
   void
   irecv(int source, EigenMat& mat, MPI_Request& request) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Irecv(mat.data(),
         (int)mat.size(),
         internal::typeMPI<typename EigenMat::Scalar>(),
@@ -380,7 +380,7 @@ namespace mpi {
     sizeInfo[1] = (int)flattened.size();
 
     // send
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     // size info
     MPI_Send(sizeInfo.data(), 2, MPI_INT, dest, tag * 3 + 0, internal::iCommCurrent);
 
@@ -406,7 +406,7 @@ namespace mpi {
 
     // size info
     std::array<int, 2> sizeInfo;
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Recv(sizeInfo.data(),
         2,
         MPI_INT,
@@ -420,7 +420,7 @@ namespace mpi {
 
     // row, col
     std::vector<int> rowCol(nmat * 2, 0);
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Recv(rowCol.data(),
         nmat * 2,
         MPI_INT,
@@ -432,7 +432,7 @@ namespace mpi {
 
     // data
     std::vector<typename EigenMat::Scalar> flattened(nflattened, 0);
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Recv(flattened.data(),
         nflattened,
         internal::typeMPI<typename EigenMat::Scalar>(),
@@ -460,7 +460,7 @@ namespace mpi {
   T
   min(const T& value) {
     T result = value;
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Allreduce(&value, &result, 1, internal::typeMPI<T>(), MPI_MIN, internal::iCommCurrent);
 #endif
     return result;
@@ -471,7 +471,7 @@ namespace mpi {
   T
   max(const T& value) {
     T result = value;
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Allreduce(&value, &result, 1, internal::typeMPI<T>(), MPI_MAX, internal::iCommCurrent);
 #endif
     return result;
@@ -482,7 +482,7 @@ namespace mpi {
   T
   sum(const T& value) {
     T result = value;
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Allreduce(&value, &result, 1, internal::typeMPI<T>(), MPI_SUM, internal::iCommCurrent);
 #endif
     return result;
@@ -493,7 +493,7 @@ namespace mpi {
   void
   sumEigen(EigenMat& value) {
     EigenMat total(value);
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Allreduce(value.data(),
         total.data(),
         (int)value.size(),
@@ -511,7 +511,7 @@ namespace mpi {
   gather(T val, std::vector<T>& vecVal, int dest) {
     if (dest == MPI_ALL) {
       vecVal.resize(nproc());
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
       MPI_Allgather(&val,
           1,
           internal::typeMPI<T>(),
@@ -526,7 +526,7 @@ namespace mpi {
       if (rank() == dest) {
         vecVal.resize(nproc());
       }
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
       MPI_Gather(&val,
           1,
           internal::typeMPI<T>(),
@@ -565,7 +565,7 @@ namespace mpi {
 
     // bcast flattened
     if (dest == MPI_ALL) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
       MPI_Allgatherv(vec.data(),
           size,
           internal::typeMPI<T>(),
@@ -578,7 +578,7 @@ namespace mpi {
       vecVecFlatten = vec;
 #endif
     } else {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
       MPI_Gatherv(vec.data(),
           size,
           internal::typeMPI<T>(),
@@ -647,7 +647,7 @@ namespace mpi {
   template <typename T>
   void
   scatter(const std::vector<T>& vecVal, T& val, int src) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Scatter(vecVal.data(),
         1,
         internal::typeMPI<T>(),
@@ -687,7 +687,7 @@ namespace mpi {
     vec.resize(size);
 
     // scatter flattened
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Scatterv(vecVecFlatten.data(),
         vSize.data(),
         vDisp.data(),

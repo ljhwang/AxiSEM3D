@@ -41,7 +41,7 @@ namespace io {
   popInputDir(const std::string& fname);
 
   //////////////////// source code dir ////////////////////
-  const std::string gProjectDirectory = _PROJ_DIR;
+  const std::string gProjectDirectory = AXISEM3D_PROJ_DIR;
 
   //////////////////// runtime verbose ////////////////////
   // verbose levels

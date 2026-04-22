@@ -13,7 +13,7 @@
 #define PRT_hpp
 
 // J^-1 components scaled by |J|
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
 // computed on the fly as static variables
 #define xX0_J sX0_J
 #define xX1_J sX1_J
@@ -32,7 +32,7 @@
 
 class PRT {
   public:
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // 1D constructor
   PRT(const eigen::DMatPP_RM& X0,
       const eigen::DMatPP_RM& X1,
@@ -103,7 +103,7 @@ class PRT {
     mX0.checkCompatibility(m1D, nr, elemInFourier, "mX0", "PRT");
 
     // workspace
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     sX0_J.expandWorkspace(m1D, nr);
     sX1_J.expandWorkspace(m1D, nr);
     sX2_J.expandWorkspace(m1D, nr);
@@ -143,7 +143,7 @@ class PRT {
   void
   undulatedToSpherical3_FR(
       const eigen::vec_ar3_CMatPP_RM& und3, eigen::vec_ar3_CMatPP_RM& sph3, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeScaledX();
 #endif
     for (int alpha = 0; alpha < nu_1; alpha++) {
@@ -155,7 +155,7 @@ class PRT {
   void
   undulatedToSpherical6_FR(
       const eigen::vec_ar6_CMatPP_RM& und6, eigen::vec_ar9_CMatPP_RM& sph9, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeScaledX();
 #endif
     for (int alpha = 0; alpha < nu_1; alpha++) {
@@ -206,7 +206,7 @@ class PRT {
   // fluid, und -> sph
   void
   undulatedToSpherical3_CD(const eigen::RMatXN3& und3, eigen::RMatXN3& sph3, int nr) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeScaledX();
 #endif
     if (m1D) {
@@ -219,7 +219,7 @@ class PRT {
   // solid, und -> sph
   void
   undulatedToSpherical6_CD(const eigen::RMatXN6& und6, eigen::RMatXN9& sph9, int nr) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeScaledX();
 #endif
     if (m1D) {
@@ -251,7 +251,7 @@ class PRT {
   const faN::PropertyN mX2;
   const faN::PropertyN mX3;
 
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // |J|
   const faN::PropertyN mXJ;
 
@@ -269,7 +269,7 @@ class PRT {
     sX2_J.set(m1D, mX2, mXJ);
     sX3_J.set(m1D, mX3, mXJ);
   }
-#else
+#else // AXISEM3D_SAVE_MEMORY
   // J^-1 components scaled by |J|
   const faN::PropertyN mX0_J;
   const faN::PropertyN mX1_J;

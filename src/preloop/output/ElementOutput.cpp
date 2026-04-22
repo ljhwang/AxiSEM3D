@@ -424,7 +424,7 @@ ElementOutput::release(const SE_Model& sem,
 
     // io
     std::unique_ptr<ElementIO> elementIO = nullptr;
-#ifdef _USE_PARALLEL_NETCDF
+#ifdef AXISEM3D_USE_PARALLEL_NETCDF
     elementIO = std::make_unique<ElementIO_ParNetCDF>();
 #else
     elementIO = std::make_unique<ElementIO_NetCDF>();

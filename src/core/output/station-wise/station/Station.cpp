@@ -28,7 +28,7 @@ Station::setElement(const eigen::DRowN& weights, int nu_1) {
   mNonZeroWeights = weights(mNonZeroIndices).cast<numerical::Real>();
 
   // 2 * exp(i * alpha * phi) for Fourier interpolation
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
   // precompute
   m2ExpIAlphaPhi.resize(nu_1);
   eigen_tools::computeTwoExpIAlphaPhi(nu_1, mPhi, m2ExpIAlphaPhi);

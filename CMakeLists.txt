@@ -81,44 +81,44 @@ endif()
 ################# macros passed to AxiSEM3D #################
 # grab version from VERSION file:
 file(STRINGS "${CMAKE_SOURCE_DIR}/VERSION" AXISEM3D_VERSION LIMIT_COUNT 1)
-add_definitions(-D_VERSION="${AXISEM3D_VERSION}")
+add_definitions(-DAXISEM3D_VERSION="${AXISEM3D_VERSION}")
 
 # source dir
-add_definitions(-D_PROJ_DIR=\"${PROJECT_SOURCE_DIR}\")
+add_definitions(-DAXISEM3D_PROJ_DIR=\"${PROJECT_SOURCE_DIR}\")
 
 # nPol
 add_definitions(-D_NPOL=${NPOL_SEM})
 
 # double
 if(USE_DOUBLE)
-  add_definitions(-D_USE_DOUBLE)
+  add_definitions(-DAXISEM3D_USE_DOUBLE)
 endif()
 
 # memory
 set(MEMORY_SAVING_MODE "${save_mem}")
 setDefault(MEMORY_SAVING_MODE OFF)
 if(MEMORY_SAVING_MODE)
-  add_definitions(-D_SAVE_MEMORY)
+  add_definitions(-DAXISEM3D_SAVE_MEMORY)
 endif()
 
 # serial build
 set(SERIAL_BUILD "${serial}")
 setDefault(SERIAL_BUILD OFF)
 if(SERIAL_BUILD)
-  add_definitions(-D_SERIAL_BUILD)
+  add_definitions(-DAXISEM3D_SERIAL_BUILD)
   set(USE_PARALLEL_NETCDF OFF CACHE FORCE)
 endif()
 
 # parallel NetCDF
 if(USE_PARALLEL_NETCDF)
-  add_definitions(-D_USE_PARALLEL_NETCDF)
+  add_definitions(-DAXISEM3DAXISEM3D_USE_PARALLEL_NETCDF)
 endif()
 
 # skip _MM_SET_FLUSH_ZERO_MODE in fenv.cpp
 set(SKIP_MM_SET "${skip_mm_set}")
 setDefault(SKIP_MM_SET OFF)
 if(SKIP_MM_SET)
-  add_definitions(-D_SKIP_DISABLE_SSE_DENORMS)
+  add_definitions(-DAXISEM3D_SKIP_DISABLE_SSE_DENORMS)
 endif()
 
 

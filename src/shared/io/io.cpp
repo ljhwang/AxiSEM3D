@@ -81,7 +81,7 @@ namespace io {
         gOutputDirectory = argv[++i];
       } else if (arg == "--version") {
         if (mpi::root()) {
-          std::cout << "AxiSEM3D version " << _VERSION << std::endl;
+          std::cout << "AxiSEM3D version " << AXISEM3D_VERSION << std::endl;
         }
         std::exit(0);
       } else if (arg == "--help" || arg == "-h") {
@@ -198,7 +198,7 @@ namespace io {
     welc = replace(welc, "}", tilde + "\n");
     welc = replace(welc, "[", space);
     welc = replace(welc, "]", space + "\n");
-    welc = replace(welc, "x.yyyyy", _VERSION);
+    welc = replace(welc, "x.yyyyy", AXISEM3D_VERSION);
     return replace(welc, "\\", "\\\\");
   }
 

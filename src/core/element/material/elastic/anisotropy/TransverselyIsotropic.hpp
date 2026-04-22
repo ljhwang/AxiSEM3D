@@ -13,7 +13,7 @@
 #define TransverselyIsotropic_hpp
 
 // - N * 2
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
 // computed on the fly as static variables
 #define xMinusN2 sMinusN2
 #else
@@ -33,7 +33,7 @@ class TransverselyIsotropic : public Elastic {
       const eigen::DMatPP_RM& L,
       const eigen::DMatPP_RM& N) :
       Elastic(true, attenuation), mA(A), mC(C), mF(F), mL(L), mN(N)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mMinusN2(eigen::DMatPP_RM(N * (-2.)))
 #endif
@@ -49,7 +49,7 @@ class TransverselyIsotropic : public Elastic {
       const eigen::DMatXN& L,
       const eigen::DMatXN& N) :
       Elastic(false, attenuation), mA(A), mC(C), mF(F), mL(L), mN(N)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mMinusN2(eigen::DMatXN(N * (-2.)))
 #endif
@@ -60,7 +60,7 @@ class TransverselyIsotropic : public Elastic {
   // copy constructor
   TransverselyIsotropic(const TransverselyIsotropic& other) :
       Elastic(other), mA(other.mA), mC(other.mC), mF(other.mF), mL(other.mL), mN(other.mN)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mMinusN2(other.mMinusN2)
 #endif
@@ -78,7 +78,7 @@ class TransverselyIsotropic : public Elastic {
     mA.checkCompatibility(m1D, nr, elemInFourier, "mA", "TransverselyIsotropic");
 
     // workspace
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     sMinusN2.expandWorkspace(m1D, nr);
 #endif
   }
@@ -101,7 +101,7 @@ class TransverselyIsotropic : public Elastic {
   strainToStress_FR(
       const eigen::vec_ar6_CMatPP_RM& strain, eigen::vec_ar6_CMatPP_RM& stress, int nu_1) const {
     // elasticity
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeMinusN2();
 #endif
     for (int alpha = 0; alpha < nu_1; alpha++) {
@@ -116,7 +116,7 @@ class TransverselyIsotropic : public Elastic {
   void
   strainToStress_CD(const eigen::RMatXN6& strain, eigen::RMatXN6& stress, int nr) const {
     // elasticity
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeMinusN2();
 #endif
     if (m1D) {
@@ -135,7 +135,7 @@ class TransverselyIsotropic : public Elastic {
   const faN::PropertyN mA, mC, mF, mL, mN;
 
   // - N * 2
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // computed on the fly as static variables
   inline static faN::PropertyN sMinusN2;
   void

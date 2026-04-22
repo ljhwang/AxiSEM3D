@@ -193,7 +193,7 @@ StationOutput::verbose(double dt, int numRecordSteps, int numStations) const {
   } else if (mFormat == Format::AsciiChannel) {
     ss << boxEquals(4, width, "output file format", "ascii (per channel)");
   } else {
-#ifdef _USE_PARALLEL_NETCDF
+#ifdef AXISEM3D_USE_PARALLEL_NETCDF
     ss << boxEquals(4, width, "output file format", "NetCDF (parallel)");
 #else
     ss << boxEquals(4, width, "output file format", "NetCDF (serial)");
@@ -385,7 +385,7 @@ StationOutput::release(const SE_Model& sem,
     } else if (stgrp->mFormat == Format::AsciiChannel) {
       stationIO = std::make_unique<StationIO_Ascii>(false);
     } else {
-#ifdef _USE_PARALLEL_NETCDF
+#ifdef AXISEM3D_USE_PARALLEL_NETCDF
       stationIO = std::make_unique<StationIO_ParNetCDF>();
 #else
       stationIO = std::make_unique<StationIO_NetCDF>();
