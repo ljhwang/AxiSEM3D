@@ -30,8 +30,11 @@ easiest way. If necessary, the following CMake options can be specified (using t
 |----------|---------|-------------|
 | ADDITIONAL_CXX_FLAGS | | Optional compilation flags (for example for optimization) |
 | ADDITIONAL_LINK_OPTIONS | | Optional additional link options |
+| SERIAL_BUILD | OFF | Turn to ON to disable MPI |
 | NPOL_SEM | 4 | Polynomial order for spectral elements (from 1 to 8) |
 | USE_DOUBLE | OFF | If ON use double precision, otherwise single precision numbers |
+| MEMORY_SAVING_MODE | OFF | If ON, try to conserve memory |
+| SKIP_MM_SET | OFF | If ON, skip _MM_SET_FLUSH_ZERO_MODE in fenv.cpp |
 | BOOST_DIR | | Optional hint to the Boost directory |
 | EIGEN3_DIR | | Optional hint to the Eigen directory |
 | FFTW3_DIR | | Optional hint to the FFTW directory |
