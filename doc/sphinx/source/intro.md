@@ -161,7 +161,7 @@ If relevant, cite one or more of the following as well:
     }   
 
 ### Data Availability
-We strongly recommend making your data available for reproducibility and replicability. Consider depositing your data (code, parameter files, data, log files, ...) in an approved repository, which will assign an identifier (e.g. a DOI) and enable citation of your data. See [geodynamics.org software publishing guidance](https://geodynamics.org/software/software-bp/software-publishing).
+We strongly recommend making your data available for reproducibility and replicability. Consider depositing your data (code, parameter files, data, log files, ...) in an approved repository, which will assign an identifier (e.g., a DOI) and enable citation of your data. See [geodynamics.org software publishing guidance](https://geodynamics.org/software/software-bp/software-publishing).
 Then add the following to your data availability statement:
 
     The code modifications, parameter, data, and log files used for the models in the study are available at DOI (Authors X, Y, Z) under CC BY-NC-SA 4.0.

@@ -5,7 +5,7 @@ To rigorously optimise the Nr field of a simulation, [wavefield learning](learni
     * *type_Nr: CONSTANT*
     * *constant: an educated guess for the maximum possible Nr-value*
     * *bound_Nr_by_inplane: true*
-* **Advanced:** for global models, depth-dependent variations of Nr can be predicted rather well (shown in Leng et al. 2019), so it may be better to use the analytical field rather than a constant cap Nr, i.e.:
+* **Advanced:** for global models, depth-dependent variations of Nr can be predicted rather well (shown in {cite:t}`Leng2019`), so it may be better to use the analytical field rather than a constant cap Nr, i.e.:
     * *type_Nr: ANALYTICAL*
     * *control_depths: vector of depths where max Nr is known (unit in metres, vector given as [depth1, depth2, ...])*
     * *Nr_at_control_depths: educated guess for the maximum possible Nr-value at the above depths (also given as vector)*

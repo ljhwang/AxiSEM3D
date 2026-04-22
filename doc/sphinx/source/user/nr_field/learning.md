@@ -18,7 +18,7 @@ The other options in the wavefield scanning section of *inparam.nr.yaml* allow t
 Here are practical examples:
 
 1. A global-scale simulation aiming to resolve first arrivals and surface waves
-    * this method is used in Leng et al. (2019)
+    * this method is used in {cite:t}`Leng2019`
     * there are two equivalent ways of setting this up:
         1. *relative_amplitude_skipped: 1.*
         2. *max_num_peaks: 1*
