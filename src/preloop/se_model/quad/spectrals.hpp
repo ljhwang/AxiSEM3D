@@ -19,7 +19,7 @@ namespace spectrals {
   ///////////////////////////// internal /////////////////////////////
   // copied from salvus
   namespace internal {
-#if _NPOL == 1
+#if AXISEM3D_NPOL == 1
     // nPol = 1
     const std::vector<double> pGLL = {-1.000000000000, +1.000000000000};
     const std::vector<double> pGLJ = {-1.000000000000, +1.000000000000};
@@ -29,7 +29,7 @@ namespace spectrals {
         -0.500000000000, -0.500000000000, +0.500000000000, +0.500000000000};
     const std::vector<double> gGLJ = {
         -0.500000000000, -0.500000000000, +0.500000000000, +0.500000000000};
-#elif _NPOL == 2
+#elif AXISEM3D_NPOL == 2
     // nPol = 2
     const std::vector<double> pGLL = {-1.000000000000, +0.000000000000, +1.000000000000};
     const std::vector<double> pGLJ = {-1.000000000000, +0.200000000000, +1.000000000000};
@@ -53,7 +53,7 @@ namespace spectrals {
         -0.750000000000,
         +0.750000000000,
         +1.750000000000};
-#elif _NPOL == 3
+#elif AXISEM3D_NPOL == 3
     // nPol = 3
     const std::vector<double> pGLL = {
         -1.000000000000, -0.447213595500, +0.447213595500, +1.000000000000};
@@ -95,7 +95,7 @@ namespace spectrals {
         -0.522407749927,
         +1.093836321356,
         +3.500000000000};
-#elif _NPOL == 4
+#elif AXISEM3D_NPOL == 4
     // nPol = 4
     const std::vector<double> pGLL = {
         -1.000000000000, -0.654653670708, +0.000000000000, +0.654653670708, +1.000000000000};
@@ -155,7 +155,7 @@ namespace spectrals {
         -0.548422156095,
         +1.573113723168,
         +5.750000000000};
-#elif _NPOL == 5
+#elif AXISEM3D_NPOL == 5
     // nPol = 5
     const std::vector<double> pGLL = {-1.000000000000,
         -0.765055323929,
@@ -253,7 +253,7 @@ namespace spectrals {
         -0.651571327331,
         +2.169548505244,
         +8.500000000000};
-#elif _NPOL == 6
+#elif AXISEM3D_NPOL == 6
     // nPol = 6
     const std::vector<double> pGLL = {-1.000000000000,
         -0.830223896279,
@@ -381,7 +381,7 @@ namespace spectrals {
         -0.794583611171,
         +2.878759657960,
         +11.75000000000};
-#elif _NPOL == 7
+#elif AXISEM3D_NPOL == 7
     // nPol = 7
     const std::vector<double> pGLL = {-1.000000000000,
         -0.871740148510,
@@ -543,7 +543,7 @@ namespace spectrals {
         -0.968457773757,
         +3.699202287759,
         +15.50000000000};
-#elif _NPOL == 8
+#elif AXISEM3D_NPOL == 8
     // nPol = 8
     const std::vector<double> pGLL = {-1.000000000000,
         -0.899757995411,

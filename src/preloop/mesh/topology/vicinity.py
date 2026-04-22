@@ -79,9 +79,9 @@ def print_vicinity_const(npol):
     
     # print
     if npol == 1:
-        print("#if _NPOL == %d" % npol)
+        print("#if AXISEM3D_NPOL == %d" % npol)
     else:
-        print("#elif _NPOL == %d" % npol)
+        print("#elif AXISEM3D_NPOL == %d" % npol)
     print("// nPol = %d" % npol)
     print_array4('gNodeIPnt', node_ipnts)
     print_array4_vector('gEdgeIPnt', edge_ipnts)
