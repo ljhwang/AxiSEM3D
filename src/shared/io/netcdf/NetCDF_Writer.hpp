@@ -100,7 +100,7 @@ class NetCDF_Writer {
 
     // this call to nc_var_par_access is not valid
     // // collective
-    // #ifdef _USE_PARALLEL_NETCDF
+    // #ifdef AXISEM3D_USE_PARALLEL_NETCDF
     // if (collective) {
     //     netcdf::error(nc_var_par_access(mPWD, varid, NC_COLLECTIVE),
     //                   "nc_var_par_access", mFileName);

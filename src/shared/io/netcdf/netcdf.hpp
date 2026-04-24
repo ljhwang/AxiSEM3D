@@ -16,7 +16,7 @@ extern "C" {
 #include <netcdf.h>
 }
 
-#ifdef _USE_PARALLEL_NETCDF
+#ifdef AXISEM3D_USE_PARALLEL_NETCDF
 // stop netCDF from including mpicxx headers:
 #define MPICH_SKIP_MPICXX
 extern "C" {

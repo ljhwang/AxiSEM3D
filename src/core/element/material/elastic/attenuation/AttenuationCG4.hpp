@@ -40,7 +40,7 @@ class AttenuationCG4 : public Attenuation {
   // 1D constructor
   AttenuationCG4(const eigen::DMat22_RM& dLambda, const eigen::DMat22_RM& dMu) :
       Attenuation(true), mDLambda(dLambda), mDMu(dMu)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mDMu2(eigen::DMat22_RM(dMu * 2.))
 #endif
@@ -51,7 +51,7 @@ class AttenuationCG4 : public Attenuation {
   // 3D constructor
   AttenuationCG4(const eigen::DMatX4& dLambda, const eigen::DMatX4& dMu) :
       Attenuation(false), mDLambda(dLambda), mDMu(dMu)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mDMu2(eigen::DMatX4(dMu * 2.))
 #endif
@@ -62,7 +62,7 @@ class AttenuationCG4 : public Attenuation {
   // copy constructor
   AttenuationCG4(const AttenuationCG4& other) :
       Attenuation(other), mDLambda(other.mDLambda), mDMu(other.mDMu)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mDMu2(other.mDMu2)
 #endif
@@ -117,7 +117,7 @@ class AttenuationCG4 : public Attenuation {
         sStrain4_CD.resize(nr, 4 * 6);
       }
     }
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     sDMu2.expandWorkspace(m1D, nr);
 #endif
   }
@@ -139,7 +139,7 @@ class AttenuationCG4 : public Attenuation {
   // apply attenuation in Fourier space
   void
   apply(const eigen::vec_ar6_CMatPP_RM& strain, eigen::vec_ar6_CMatPP_RM& stress, int nu_1) {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeDMu2();
 #endif
     for (int alpha = 0; alpha < nu_1; alpha++) {
@@ -151,7 +151,7 @@ class AttenuationCG4 : public Attenuation {
   // apply attenuation in cardinal space
   void
   apply(const eigen::RMatXN6& strain, eigen::RMatXN6& stress, int nr) {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeDMu2();
 #endif
     if (m1D) {
@@ -170,7 +170,7 @@ class AttenuationCG4 : public Attenuation {
   const fa4::Property4 mDMu;
 
   // dmu * 2
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // computed on the fly as static variables
   inline static fa4::Property4 sDMu2;
   void

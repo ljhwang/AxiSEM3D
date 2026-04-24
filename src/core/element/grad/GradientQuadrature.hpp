@@ -18,7 +18,7 @@
 #include "eigen_element.hpp"
 
 // differential operators scaled by integral factor
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
 // computed on the fly as static variables
 #define xDsDxii_IF sDsDxii_IF
 #define xDsDeta_IF sDsDeta_IF
@@ -62,7 +62,7 @@ template <typename floatT> class GradientQuadrature {
   // for axis
   const bool mAxial;
 
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // integral factor
   const RMatPP_RM mIntegralFactor;
 
@@ -93,7 +93,7 @@ template <typename floatT> class GradientQuadrature {
 
   /////////////////////////// methods ///////////////////////////
   public:
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // constructor
   GradientQuadrature(const eigen::DMatPP_RM& dsdxii,
       const eigen::DMatPP_RM& dsdeta,
@@ -230,7 +230,7 @@ template <typename floatT> class GradientQuadrature {
   // quad 3 -> 1
   void
   computeQuad3(const vec_ar3_CMatPP_RM& q_i, vec_ar1_CMatPP_RM& q, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute scaled operators
     computeScaledOperators();
 #endif
@@ -252,7 +252,7 @@ template <typename floatT> class GradientQuadrature {
   // 20->6 21->7 22->8
   void
   computeQuad9(const vec_ar9_CMatPP_RM& fi_j, vec_ar3_CMatPP_RM& fi, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute scaled operators
     computeScaledOperators();
 #endif
@@ -282,7 +282,7 @@ template <typename floatT> class GradientQuadrature {
   // 20->4 21->3 22->2
   void
   computeQuad6(const vec_ar6_CMatPP_RM& sij, vec_ar3_CMatPP_RM& fi, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute scaled operators
     computeScaledOperators();
 #endif

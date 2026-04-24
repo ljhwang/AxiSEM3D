@@ -60,7 +60,7 @@ class Station {
     }
 
     // azimuthal interpolation
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
     // sum exp
     eigen_tools::computeFourierAtPhiExp(xd, nu_1, m2ExpIAlphaPhi, d);
 #else
@@ -194,7 +194,7 @@ class Station {
   const double mPhi;
 
   // 2 * exp(i * alpha * phi) for Fourier interpolation
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
   // precompute
   eigen::CColX m2ExpIAlphaPhi = eigen::CColX(0);
 #else

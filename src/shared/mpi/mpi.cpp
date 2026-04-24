@@ -20,7 +20,7 @@
 namespace mpi {
   ////////////////////////////// internal //////////////////////////////
   namespace internal {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     // group superior
     MPI_Comm iCommSuper = MPI_COMM_NULL;
     // group inferior
@@ -46,7 +46,7 @@ namespace mpi {
   // initialize mpi
   void
   initialize(int* argc, char*** argv) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Init(argc, argv);
 #endif
     // init current comm
@@ -61,7 +61,7 @@ namespace mpi {
   void
   finalize() {
     freeGroupComm();
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Finalize();
 #endif
   }
@@ -79,7 +79,7 @@ namespace mpi {
     // get node id
     char charNID[MPI_MAX_PROCESSOR_NAME] = "Node";
     int lenNID = 4;
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Get_processor_name(charNID, &lenNID);
 #endif
     std::string nodeID(charNID);
@@ -126,7 +126,7 @@ namespace mpi {
     internal::iSuper = (myIndexInGroup == 0);
 
     // split MPI comm
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     // super: discontinuous in rank
     MPI_Comm_split(MPI_COMM_WORLD, myIndexInGroup, rank(), &internal::iCommSuper);
     // infer: continuous in rank
@@ -139,7 +139,7 @@ namespace mpi {
   freeGroupComm() {
     // first go back to world
     enterWorld();
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     if (internal::iCommSuper != MPI_COMM_NULL) {
       MPI_Comm_free(&internal::iCommSuper);
     }
@@ -152,7 +152,7 @@ namespace mpi {
   // barrier
   void
   barrier() {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Barrier(internal::iCommCurrent);
 #endif
   }
@@ -160,7 +160,7 @@ namespace mpi {
   // abort
   void
   abort(int err) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Abort(MPI_COMM_WORLD, err);
 #else
     exit(err);
@@ -214,7 +214,7 @@ namespace mpi {
   // wait_all: must be implemented in .cpp
   void
   waitAll(std::vector<MPI_Request>& requests) {
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     MPI_Waitall((int)requests.size(), requests.data(), MPI_STATUSES_IGNORE);
 #endif
   }
@@ -284,7 +284,7 @@ namespace mpi {
   verbose() {
     std::stringstream ss;
     ss << bstring::boxTitle("MPI");
-#ifndef _SERIAL_BUILD
+#ifndef AXISEM3D_SERIAL_BUILD
     ss << bstring::boxEquals(0, 24, "# processors", nproc());
     ss << bstring::boxEquals(0, 24, "# MPI groups", internal::iNumGroups);
     ss << bstring::boxEquals(0, 24, "# processors per group", internal::iNumProcPerGroup);

@@ -16,7 +16,7 @@
 #include "CoordTransform.hpp"
 
 // sin(theta)
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
 // computed on the fly as static variables
 #define xSin1t sSin1t
 #define xCos1t sCos1t
@@ -34,7 +34,7 @@ class CoordTransformSpherical : public CoordTransform {
   inline static const numerical::Real half = .5;
 
   public:
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // constructor
   CoordTransformSpherical(const eigen::DMatPP_RM& theta) : mTheta(theta.cast<numerical::Real>()) {
     // nothing
@@ -53,7 +53,7 @@ class CoordTransformSpherical : public CoordTransform {
   // (s,phi,z) -> (R,T,Z)
   void
   transformSPZ_RTZ3(eigen::vec_ar3_CMatPP_RM& ui, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute sin(theta)
     computeSinOneTheta();
 #endif
@@ -76,7 +76,7 @@ class CoordTransformSpherical : public CoordTransform {
   // (R,T,Z) -> (s,phi,z)
   void
   transformRTZ_SPZ3(eigen::vec_ar3_CMatPP_RM& ui, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute sin(theta)
     computeSinOneTheta();
 #endif
@@ -99,7 +99,7 @@ class CoordTransformSpherical : public CoordTransform {
   // (s,phi,z) -> (R,T,Z) for nabla
   void
   transformSPZ_RTZ9(eigen::vec_ar9_CMatPP_RM& nij, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute sin(theta)
     computeSinOneTwoTheta();
 #endif
@@ -136,7 +136,7 @@ class CoordTransformSpherical : public CoordTransform {
   // (R,T,Z) -> (s,phi,z) for nabla
   void
   transformRTZ_SPZ9(eigen::vec_ar9_CMatPP_RM& nij, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute sin(theta)
     computeSinOneTwoTheta();
 #endif
@@ -173,7 +173,7 @@ class CoordTransformSpherical : public CoordTransform {
   // (s,phi,z) -> (R,T,Z) for Voigt
   void
   transformSPZ_RTZ6(eigen::vec_ar6_CMatPP_RM& eij, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute sin(theta)
     computeSinOneTwoTheta();
 #endif
@@ -201,7 +201,7 @@ class CoordTransformSpherical : public CoordTransform {
   // (R,T,Z) -> (s,phi,z) for Voigt
   void
   transformRTZ_SPZ6(eigen::vec_ar6_CMatPP_RM& sij, int nu_1) const {
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     // compute sin(theta)
     computeSinOneTwoTheta();
 #endif
@@ -228,7 +228,7 @@ class CoordTransformSpherical : public CoordTransform {
   }
 
   private:
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // theta
   const eigen::RMatPP_RM mTheta;
 

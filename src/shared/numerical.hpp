@@ -19,7 +19,7 @@ namespace numerical {
   typedef std::ptrdiff_t Int;
 
   // solver precision
-#ifdef _USE_DOUBLE
+#ifdef AXISEM3D_USE_DOUBLE
   typedef double Real;
 #else
   typedef float Real;

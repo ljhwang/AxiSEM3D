@@ -9,7 +9,7 @@
 
 // fenv.cpp
 
-#ifndef _SKIP_DISABLE_SSE_DENORMS
+#ifndef AXISEM3D_SKIP_DISABLE_SSE_DENORMS
 #if (defined(__i386__) || defined(__x86_64__) || defined(_M_IX86) || defined(_M_X64)) && \
     defined(__SSE__)
 #include <xmmintrin.h>

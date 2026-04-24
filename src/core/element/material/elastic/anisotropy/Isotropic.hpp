@@ -13,7 +13,7 @@
 #define Isotropic_hpp
 
 // mu * 2
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
 // computed on the fly as static variables
 #define xMu2 sMu2
 #else
@@ -30,7 +30,7 @@ class Isotropic : public Elastic {
       const eigen::DMatPP_RM& lambda,
       const eigen::DMatPP_RM& mu) :
       Elastic(true, attenuation), mLambda(lambda), mMu(mu)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mMu2(eigen::DMatPP_RM(mu * 2.))
 #endif
@@ -43,7 +43,7 @@ class Isotropic : public Elastic {
       const eigen::DMatXN& lambda,
       const eigen::DMatXN& mu) :
       Elastic(false, attenuation), mLambda(lambda), mMu(mu)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mMu2(eigen::DMatXN(mu * 2.))
 #endif
@@ -54,7 +54,7 @@ class Isotropic : public Elastic {
   // copy constructor
   Isotropic(const Isotropic& other) :
       Elastic(other), mLambda(other.mLambda), mMu(other.mMu)
-#ifndef _SAVE_MEMORY
+#ifndef AXISEM3D_SAVE_MEMORY
       ,
       mMu2(other.mMu2)
 #endif
@@ -78,7 +78,7 @@ class Isotropic : public Elastic {
     mMu.checkCompatibility(m1D, nr, elemInFourier, "mMu", "Isotropic");
 
     // workspace
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     sMu2.expandWorkspace(m1D, nr);
 #endif
   }
@@ -95,7 +95,7 @@ class Isotropic : public Elastic {
   strainToStress_FR(
       const eigen::vec_ar6_CMatPP_RM& strain, eigen::vec_ar6_CMatPP_RM& stress, int nu_1) const {
     // elasticity
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeMu2();
 #endif
     for (int alpha = 0; alpha < nu_1; alpha++) {
@@ -110,7 +110,7 @@ class Isotropic : public Elastic {
   void
   strainToStress_CD(const eigen::RMatXN6& strain, eigen::RMatXN6& stress, int nr) const {
     // elasticity
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
     computeMu2();
 #endif
     if (m1D) {
@@ -130,7 +130,7 @@ class Isotropic : public Elastic {
   const faN::PropertyN mMu;
 
   // mu * 2
-#ifdef _SAVE_MEMORY
+#ifdef AXISEM3D_SAVE_MEMORY
   // computed on the fly as static variables
   inline static faN::PropertyN sMu2;
   void
