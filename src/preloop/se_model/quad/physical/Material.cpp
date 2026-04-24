@@ -243,6 +243,17 @@ Material::getPointwiseRhoVpVs(
     eigen::arN_DColX& rho, eigen::arN_DColX& vp, eigen::arN_DColX& vs) const {
   // density
   rho = getProperty("RHO").getPointwise();
+
+  {
+    // check for positive density
+    for (int ipnt = 0; ipnt < spectral::nPEM; ipnt++) {
+      if (rho[ipnt].minCoeff() < numerical::dEpsilon) {
+        throw std::runtime_error("Material::getPointwiseRhoVpVs || "
+                                 "Density is not positive.");
+      }
+    }
+  }
+
   if (currentRheology() == RheologyType::FLUID) {
     vp = getProperty("VP").getPointwise();
     // vs = 0
