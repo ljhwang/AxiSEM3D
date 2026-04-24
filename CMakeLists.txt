@@ -70,7 +70,7 @@ add_definitions(-D_VERSION="${AXISEM3D_VERSION}")
 add_definitions(-D_PROJ_DIR=\"${PROJECT_SOURCE_DIR}\")
 
 # nPol
-add_definitions(-D_NPOL=${NPOL_SEM})
+add_definitions(-D AXISEM3D_NPOL=${NPOL_SEM})
 
 # double
 if(USE_DOUBLE)

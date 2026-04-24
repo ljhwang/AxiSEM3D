@@ -12,13 +12,13 @@
 #ifndef spectral_hpp
 #define spectral_hpp
 
-#ifndef _NPOL
-#define _NPOL 4
+#ifndef AXISEM3D_NPOL
+#define AXISEM3D_NPOL 4
 #endif
 
 namespace spectral {
   // npol
-  const int nPol = _NPOL;
+  const int nPol = AXISEM3D_NPOL;
 
   // number of points on an edge
   const int nPntEdge = nPol + 1;

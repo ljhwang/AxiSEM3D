@@ -17,29 +17,29 @@
 
 namespace vicinity {
   namespace constants {
-#if _NPOL == 1
+#if AXISEM3D_NPOL == 1
     // nPol = 1
     const std::vector<int> gNodeIPnt = {0, 2, 3, 1};
     const std::vector<std::vector<int>> gEdgeIPnt = {{0, 2}, {2, 3}, {3, 1}, {1, 0}};
     const std::vector<int> gEdgeIPntAll = {0, 1, 2, 3};
-#elif _NPOL == 2
+#elif AXISEM3D_NPOL == 2
     // nPol = 2
     const std::vector<int> gNodeIPnt = {0, 6, 8, 2};
     const std::vector<std::vector<int>> gEdgeIPnt = {{0, 3, 6}, {6, 7, 8}, {8, 5, 2}, {2, 1, 0}};
     const std::vector<int> gEdgeIPntAll = {0, 1, 2, 3, 5, 6, 7, 8};
-#elif _NPOL == 3
+#elif AXISEM3D_NPOL == 3
     // nPol = 3
     const std::vector<int> gNodeIPnt = {0, 12, 15, 3};
     const std::vector<std::vector<int>> gEdgeIPnt = {
         {0, 4, 8, 12}, {12, 13, 14, 15}, {15, 11, 7, 3}, {3, 2, 1, 0}};
     const std::vector<int> gEdgeIPntAll = {0, 1, 2, 3, 4, 7, 8, 11, 12, 13, 14, 15};
-#elif _NPOL == 4
+#elif AXISEM3D_NPOL == 4
     // nPol = 4
     const std::vector<int> gNodeIPnt = {0, 20, 24, 4};
     const std::vector<std::vector<int>> gEdgeIPnt = {
         {0, 5, 10, 15, 20}, {20, 21, 22, 23, 24}, {24, 19, 14, 9, 4}, {4, 3, 2, 1, 0}};
     const std::vector<int> gEdgeIPntAll = {0, 1, 2, 3, 4, 5, 9, 10, 14, 15, 19, 20, 21, 22, 23, 24};
-#elif _NPOL == 5
+#elif AXISEM3D_NPOL == 5
     // nPol = 5
     const std::vector<int> gNodeIPnt = {0, 30, 35, 5};
     const std::vector<std::vector<int>> gEdgeIPnt = {{0, 6, 12, 18, 24, 30},
@@ -48,7 +48,7 @@ namespace vicinity {
         {5, 4, 3, 2, 1, 0}};
     const std::vector<int> gEdgeIPntAll = {
         0, 1, 2, 3, 4, 5, 6, 11, 12, 17, 18, 23, 24, 29, 30, 31, 32, 33, 34, 35};
-#elif _NPOL == 6
+#elif AXISEM3D_NPOL == 6
     // nPol = 6
     const std::vector<int> gNodeIPnt = {0, 42, 48, 6};
     const std::vector<std::vector<int>> gEdgeIPnt = {{0, 7, 14, 21, 28, 35, 42},
@@ -57,7 +57,7 @@ namespace vicinity {
         {6, 5, 4, 3, 2, 1, 0}};
     const std::vector<int> gEdgeIPntAll = {
         0, 1, 2, 3, 4, 5, 6, 7, 13, 14, 20, 21, 27, 28, 34, 35, 41, 42, 43, 44, 45, 46, 47, 48};
-#elif _NPOL == 7
+#elif AXISEM3D_NPOL == 7
     // nPol = 7
     const std::vector<int> gNodeIPnt = {0, 56, 63, 7};
     const std::vector<std::vector<int>> gEdgeIPnt = {{0, 8, 16, 24, 32, 40, 48, 56},
@@ -92,7 +92,7 @@ namespace vicinity {
         61,
         62,
         63};
-#elif _NPOL == 8
+#elif AXISEM3D_NPOL == 8
     // nPol = 8
     const std::vector<int> gNodeIPnt = {0, 72, 80, 8};
     const std::vector<std::vector<int>> gEdgeIPnt = {{0, 9, 18, 27, 36, 45, 54, 63, 72},
