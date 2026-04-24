@@ -3,14 +3,6 @@
 #
 # This file is part of the AxiSEM3D library. See the LICENSE file for details.
 
-########################################################################
-###################### Build Settings (EDIT BELOW) #####################
-########################################################################
-
-# NOTE: these parameters can be either hardcoded in this box or
-#       passed by -D (e.g., -Dcxx=mpicxx for CMAKE_CXX_COMPILER)
-
-
 ################## compiler options ##################
 # compiler
 if(DEFINED cxx AND NOT cxx STREQUAL "")
@@ -35,15 +27,6 @@ set(NPOL_SEM "4" CACHE STRING "polynomial order of spectral elements (from 1 to 
 # using double precision doubles runtime memory and output size but
 # affects performance only slightly on a modern 64-bit architecture
 set(USE_DOUBLE OFF CACHE BOOL "If ON use double precision, otherwise single")
-
-########################################################################
-###################### Build Settings (EDIT ABOVE) #####################
-########################################################################
-
-
-
-########### NOTE: Users are less likely to edit lines below ############
-
 
 
 ################# set default values #################
@@ -95,15 +78,13 @@ if(USE_DOUBLE)
 endif()
 
 # memory
-set(MEMORY_SAVING_MODE "${save_mem}")
-setDefault(MEMORY_SAVING_MODE OFF)
+set(MEMORY_SAVING_MODE OFF CACHE BOOL "If ON, try to save system memory")
 if(MEMORY_SAVING_MODE)
   add_definitions(-D_SAVE_MEMORY)
 endif()
 
 # serial build
-set(SERIAL_BUILD "${serial}")
-setDefault(SERIAL_BUILD OFF)
+set(SERIAL_BUILD OFF CACHE BOOL "If ON, perform a serial build without MPI.")
 if(SERIAL_BUILD)
   add_definitions(-D_SERIAL_BUILD)
   set(USE_PARALLEL_NETCDF OFF CACHE FORCE)
@@ -115,8 +96,7 @@ if(USE_PARALLEL_NETCDF)
 endif()
 
 # skip _MM_SET_FLUSH_ZERO_MODE in fenv.cpp
-set(SKIP_MM_SET "${skip_mm_set}")
-setDefault(SKIP_MM_SET OFF)
+set(SKIP_MM_SET OFF CACHE BUILD "if ON, skip _MM_SET_FLUSH_ZERO_MODE in fenv.cpp")
 if(SKIP_MM_SET)
   add_definitions(-D_SKIP_DISABLE_SSE_DENORMS)
 endif()
