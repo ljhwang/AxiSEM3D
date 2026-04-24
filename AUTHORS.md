@@ -8,7 +8,7 @@ This community is led by a group of Principal Developers who are active in devel
 
 - Kuangdai Leng (EarthRover Program) - Lead Developer
 - Benjamin Fernando (Los Alamos National Laboratory) - Project Manager
-- Jonathan Wolf (University of California, Berkeley)
+- Jonathan Wolf (University of California, Santa Cruz)
 - Timo Heister (Clemson University)
 - Lorraine Hwang (University of California, Davis)
 
