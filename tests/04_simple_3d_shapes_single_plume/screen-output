@@ -1,0 +1,292 @@
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                
+      A            |i .|'''.|'||''''E'||    ||'  ____'||''|.    
+     |||   ... ...... ||..  ' ||  .   |||  |||   ` // ||   ||   
+    |  ||   '|..'  ||  ''|||. ||''|   |'|..'||    //  ||    ||  
+   .''''|.   .x.   ||      '||||      | 'M' ||    \\  ||    ||  
+  .|.  .||..|  ||..||.|'...|S.||....|.|. | .||.    3' D|...|'   
+  .............................................   //            
+                                                 /' v 1.1.0-pre   
+                                                                
+  Copyright (c) 2026 AxiSEM3D developers, MIT License           
+  Source, docs, and issues: github.com/AxiSEMunity/AxiSEM3D     
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+========================== Exodus Mesh =========================
+Overview________________________________________________________
+  Exodus file           =  homogenous_global.e
+  mesh CS               =  spherical
+  model name            =  homogenous_cart
+  isotropic             =  true
+  attenuation           =  true
+  storage type          =  element_nodes
+  # discontinuities     =  3
+Mesh geometry___________________________________________________
+  # elements            =  20178
+  # nodes               =  20439
+  range of r-axis       =  [0, 4e+06]
+  range of θ-axis       =  [0, 3.14159]
+Global variables________________________________________________
+  attenuation_f_max     =  1
+  attenuation_f_min     =  0.001
+  attenuation_f_ref     =  1
+  attenuation_w_0       =  0.00916971
+  attenuation_w_1       =  0.0717082
+  attenuation_w_2       =  0.37595
+  attenuation_w_3       =  1.66066
+  attenuation_w_4       =  8.66479
+  attenuation_y_0       =  1.69021
+  attenuation_y_1       =  1.136
+  attenuation_y_2       =  0.98737
+  attenuation_y_3       =  0.924293
+  attenuation_y_4       =  1.46137
+  dist_tolerance        =  20.6425
+  dt (nPol = 1)         =  0.72
+  min_edge_length       =  20642.5
+  minimum_period        =  13.9918
+  nr_lin_solids         =  5
+  radius                =  4e+06
+  crdsys                =  spherical
+  model                 =  homogenous_cart
+Element geometry________________________________________________
+  linear                :  1102
+  semi-spherical        :  304
+  spherical             :  18772
+Element medium__________________________________________________
+  fluid                 :  0
+  solid                 :  20178
+Material properties_____________________________________________
+  QKAPPA                ∈  [57827, 57827]
+  QMU                   ∈  [600, 600]
+  RHO                   ∈  [6000, 6000]
+  VP                    ∈  [10000, 10000]
+  VS                    ∈  [6000, 6000]
+Side sets_______________________________________________________
+  r1                    :  304 sides
+  t0                    :  216 sides
+Miscellaneous___________________________________________________
+  ellipticity curve     :  198 knots
+----------------------------------------------------------------
+Mesh generation command line:
+>> python -m salvus_mesh_lite.interface AxiSEM --basic.model
+   homogenous_global.bm --basic.period 14 --output_filename
+   homogenous_global.e
+================================================================
+
+
+============================ Geodesy ===========================
+model in Cartesian     =  false
+surface radius         =  4e+06
+solid surface radius   =  4e+06
+bottom radius          =  0
+a reference geographic location on the positive z-axis
+  latitude             =  90
+  longitude            =  0
+  radius               =  4e+06
+flattening on surface  =  0.00335281
+flattening at discontinuities___________________________________
+  f = 0.00335281    at  4e+06
+  f = 0.00335281    at  600000
+  f = 0.00335281    at  0
+* Correcting for ellipticity in latitude-θ conversions.
+================================================================
+
+
+====================== Absorbing Boundary ======================
+* Absorbing boundary has been disabled.
+================================================================
+
+
+============================ Nr(s,z) ===========================
+type   =  CONSTANT
+value  =  5
+================================================================
+
+
+====================== Computed Nr on Mesh =====================
+min Nr  =  5
+max Nr  =  5
+ave Nr  =  5
+sum Nr  =  102195
+* Nr has been limited by inplane resolution.
+* Nr has been rounded up to FFTW lucky numbers.
+================================================================
+
+
+=========================== 3D Models ==========================
+sphere ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  class name   =  StructuredGridV3D
+  NetCDF file  =  plume_1.nc
+  Coordinates___________________________________________________
+      COORD     | NC-VAR | SCOPE
+    * latitude  | lat    | [-20, 20]
+    * longitude | lon    | [-20, 20]
+    * depth     | depth  | [0, 4e+06]
+    ellipticity correction         =  false
+    depth below solid surface      =  false
+    force element center in scope  =  false
+  Properties____________________________________________________
+      KEY | NC-VAR | REF KIND | RANGE
+    * VP  | vp     | REF1D    | [-0.1, 0]
+    * VS  | vs     | REF1D    | [-0.1, 0]
+    * RHO | rho    | REF1D    | [-0.1, 0]
+    leader-only storage  =  true
+================================================================
+
+
+=========================== Time Step ==========================
+Δt determined by mesh  =  0.1036
+   Courant number      =  0.5
+   location (r,θ)      =  [581005, 0.765742]
+Δt enforced by user    =  NONE
+Δt to be used          =  0.1036
+================================================================
+
+
+========================== Attenuation =========================
+* Attenuation is turned off.
+================================================================
+
+
+===================== Computational Domain =====================
+GLL points______________________________________________________
+  SolidPoint$Mass1D              =  306065
+  SolidPoint$Mass3D              =  17824
+  Σ                              =  323889
+Spectral elements_______________________________________________
+  SolidElement$Isotropic1D       =  18978
+  SolidElement$Isotropic3D       =  1200
+  Σ                              =  20178
+Axial boundary__________________________________________________
+  Solid                          =  865
+  Fluid                          =  0
+  Σ                              =  865
+Absorbing boundary______________________________________________
+  Σ                              =  0
+Fluid surface boundary__________________________________________
+  Σ                              =  0
+Solid-fluid boundary____________________________________________
+  Σ                              =  0
+Domain decomposition____________________________________________
+  # sub-domains (nproc)          =  2
+  # rank-to-rank communications  =  1
+================================================================
+
+
+============================ Sources ===========================
+the_only_source ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Location______________________________________________________
+    horizontal          =  on axis
+    depth               =  8000 (below outer surface)
+    radial geometry     =  reference
+  Source mechanism______________________________________________
+    moment tensor       =  1e+13
+                           0
+                           0
+                           0
+                           0
+                           0
+  Source-time function__________________________________________
+    class name          =  GaussianSTF
+    half duration       =  0.518
+    decay factor        =  1.628
+    time shift          =  0
+    derivative order    =  0 (Gaussian)
+    expression of f(t)  =  1.77317 * Exp[-9.87755 * t ^ 2]
+================================================================
+
+
+======================== Simulation Time =======================
+Δt of simulation          =  0.1036
+t0 determined by sources  =  -1.295
+t1 specified by user      =  12
+[t0, t1] used by solver   =  [-1.3468, 12.0176]
+# time steps              =  130
+================================================================
+
+
+======================== Station groups ========================
+* No station groups in this simulation.
+================================================================
+
+
+======================== Element groups ========================
+orthogonal_azimuthal_slices ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Elements______________________________________________________
+    horizontal range          =  [0, 1e+10]
+    vertical range            =  [0, 1e+10]
+  Inplane sampling______________________________________________
+    edge dimension            =  both
+    # elements found          =  20178
+    GLL points on one edge    =  [0, 2, 4]
+    # GLL points per element  =  9
+  Azimuthal sampling____________________________________________
+    * Recording on 4 azimuthal slices:
+      1) azimuth              =  0
+      2) azimuth              =  1.5708
+      3) azimuth              =  3.14159
+      4) azimuth              =  4.71239
+  Wavefields____________________________________________________
+    output coordinate system  =  RTZ
+    medium type               =  solid
+    user-specified channels   =  [U]
+    standardized channels     =  [U1, U2, U3]
+  Temporal______________________________________________________
+    sampling period
+      user-specified          =  5
+      rounded to Δt           =  4.9728
+    # time steps per sample   =  48
+    time window               =  [-1.3468, 12.1212]
+  File options__________________________________________________
+    buffer size               =  100
+    flush file                =  true
+  Dimensions____________________________________________________
+    # elements                =  20178
+    # azimuthal slices        =  4
+    # GLL points              =  9
+    # channels                =  3
+    # time steps              =  3
+================================================================
+
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP STARTS TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+
+  time step / num total steps  =  10 / 130 (7%)
+
+  time step / num total steps  =  20 / 130 (15%)
+
+  time step / num total steps  =  30 / 130 (23%)
+
+  time step / num total steps  =  40 / 130 (30%)
+
+  time step / num total steps  =  50 / 130 (38%)
+
+  time step / num total steps  =  60 / 130 (46%)
+
+  time step / num total steps  =  70 / 130 (53%)
+
+  time step / num total steps  =  80 / 130 (61%)
+
+  time step / num total steps  =  90 / 130 (69%)
+
+  time step / num total steps  =  100 / 130 (76%)
+
+  time step / num total steps  =  110 / 130 (84%)
+
+  time step / num total steps  =  120 / 130 (92%)
+
+  time step / num total steps  =  130 / 130 (100%)
+
+
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTT NEWMARK TIME LOOP FINISHES TTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+total # time steps finished  =  130
+
