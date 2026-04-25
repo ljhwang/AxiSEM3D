@@ -72,6 +72,14 @@ jobs:
           # fail if git shows any changes:
           git diff --exit-code && echo "No changes after indenting." || exit 1
 
+      - name: Check Input Documentation
+        run: |
+          source $CONDA/etc/profile.d/conda.sh && conda activate axisem3d
+          cd examples/template_develop
+          python3 gen_examples.py
+          # fail if git shows any changes:
+          git diff --exit-code && echo "No changes from rebuilding example input files." || exit 1
+
       - name: test mesher
         run: |
           source $CONDA/etc/profile.d/conda.sh && conda activate axisem3d
