@@ -193,7 +193,7 @@ same as gamma_expr_solid but without VS dependency
 3) CG4:  compute attenuation on 4 GLL points per element;
 CG4 is mostly as accurate as FULL but more efficient
 than FULL, see van Driel & Nissen-​Meyer, 2014;
-CG4 requires set(NPOL 4) in CMakeLists.txt;
+CG4 requires NPOL_SEM set to 4 via CMake.
 
 
 ## 3D models
